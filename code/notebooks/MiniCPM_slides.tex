@@ -1,0 +1,751 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% A Beamer template for Bowling Green State University
+% Based on UoW beamer theme                          
+% Author: Isaac Kobby Anni                           
+% Date: January 2025                                 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[serif, aspectratio=169]{beamer}
+\usepackage[T1]{fontenc} 
+\usepackage{fourier}
+\usepackage{hyperref}
+\usepackage{latexsym,amsmath,xcolor,multicol,booktabs,calligra}
+\usepackage{graphicx,pstricks,listings,stackengine}
+\usepackage{lipsum}
+
+\author{Isaac Kobby Anni}
+\title{MiniCPM: Unveiling the Potential of Small Language Models}
+\subtitle{With Scalable Training Strategies}
+\institute{
+    Computer Science \\
+    Bowling Green State University
+}
+\date{\small \today}
+\usepackage{UoWstyle}
+
+% defs
+\def\cmd#1{\texttt{\color{brown}\footnotesize $\backslash$#1}}
+\def\env#1{\texttt{\color{blue}\footnotesize #1}}
+\definecolor{brown}{rgb}{0,0,0.5}
+\definecolor{deepred}{RGB}{153,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+\definecolor{halfgray}{gray}{0.55}
+\definecolor{deepblue}{RGB}{0,0,153}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\bfseries\color{deepblue},
+    emphstyle=\ttfamily\color{deepred},
+    stringstyle=\color{deepgreen},
+    numbers=left,
+    numberstyle=\small\color{halfgray},
+    rulesepcolor=\color{red!20!green!20!blue!20},
+    frame=shadowbox,
+}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+    \vspace*{-0.6cm}
+    \begin{figure}[htpb]
+        \begin{center}
+            % \includegraphics[keepaspectratio, scale=0.15]{pic/minicpm_logo.png}
+        \end{center}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Paper Information}
+    \begin{itemize}
+        \item \textbf{Title:} MiniCPM: Unveiling the Potential of Small Language Models with Scalable Training Strategies
+        \item \textbf{Authors:} Shengding Hu, Yuge Tu, Xu Han, et al.
+        \item \textbf{Affiliation:} Tsinghua University \& Modelbest Inc.
+        \item \textbf{Publication:} arXiv:2404.06395 (2024)
+        \item \textbf{Key Insight:} Small models can compete with models 3-5× larger through optimal training strategies
+    \end{itemize}
+\end{frame}
+
+\begin{frame}    
+\tableofcontents[sectionstyle=show,
+subsectionstyle=show/shaded/hide,
+subsubsectionstyle=show/shaded/hide]
+\end{frame}
+
+\section{Introduction \& Motivation}
+
+\begin{frame}{The Problem Statement}
+    \begin{block}{Current LLM Training Challenges}
+    \begin{itemize}[<+-| alert@+>]
+        \item \textbf{Expensive:} Trillion-parameter models cost millions to train
+        \item \textbf{Limited Access:} Only well-funded organizations can experiment
+        \item \textbf{Deployment Issues:} Too large for edge devices and personal computers
+        \item \textbf{Environmental Impact:} Massive energy consumption
+    \end{itemize}
+    \end{block}
+    
+    \begin{alertblock}{Key Question}
+    Can small language models achieve comparable performance to large models through better training strategies?
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{What is MiniCPM?}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Two Model Variants:}
+        \begin{itemize}
+            \item \textbf{MiniCPM-1.2B:} 1.2B non-embedding parameters
+            \item \textbf{MiniCPM-2.4B:} 2.4B non-embedding parameters
+        \end{itemize}
+        
+        \vspace{0.5cm}
+        \textbf{Core Achievement:}
+        \begin{itemize}
+            \item \#1 in their size categories
+            \item Comparable to 7B-13B models
+            \item Scalable training methodologies
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            % \includegraphics[width=\textwidth]{pic/minicpm_overview.png}
+            \fbox{\parbox{0.9\textwidth}{\centering [MiniCPM Model Overview\\Image Placeholder]}}
+            \caption{MiniCPM architecture overview}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+\section{Key Contributions}
+
+\begin{frame}{Three Major Contributions}
+    \begin{enumerate}
+        \item \textbf{Model Wind Tunnel Experiments (MWTE)}
+        \begin{itemize}
+            \item Use small models to optimize hyperparameters
+            \item Transfer insights to larger models
+            \item Systematic approach to training
+        \end{itemize}
+        
+        \item \textbf{Warmup-Stable-Decay (WSD) Learning Rate Scheduler}
+        \begin{itemize}
+            \item New LR schedule outperforming Cosine
+            \item Enables continuous training
+            \item Dramatic loss reduction in decay phase
+        \end{itemize}
+        
+        \item \textbf{Efficient Scaling Law Measurement}
+        \begin{itemize}
+            \item Reduced cost from $O(m^2)$ to $O(m)$
+            \item 192:1 data-to-model ratio (vs Chinchilla's 20:1)
+            \item Small models can absorb far more data
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{The MiniCPM Family}
+    \begin{table}
+        \centering
+        \begin{tabular}{lll}
+        \toprule
+        \textbf{Model} & \textbf{Description} & \textbf{Key Feature} \\
+        \midrule
+        MiniCPM-1.2B & Base model & $\sim$ Llama-7B \\
+        MiniCPM-2.4B & Base model & $\sim$ Mistral-7B, Llama-13B \\
+        MiniCPM-DPO & Aligned version & MTBench 7.25 \\
+        MiniCPM-128K & Long context & 128K tokens \\
+        MiniCPM-MoE & Mixture of Experts & 13.6B total, 4B active \\
+        \bottomrule
+        \end{tabular}
+    \end{table}
+\end{frame}
+
+\section{Performance Benchmarks}
+
+\begin{frame}{MiniCPM vs. Larger Models}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{MiniCPM-2.4B Performance:}
+        \begin{itemize}
+            \item C-Eval: \textcolor{red}{\textbf{51.13\%}} (\#1 in 2B)
+            \item CMMLU: \textcolor{red}{\textbf{51.07\%}} (\#1 in 2B)
+            \item MMLU: 53.46\% (beats Mistral-7B)
+            \item HumanEval: \textcolor{red}{\textbf{50.00\%}}
+            \item MBPP: 47.31\%
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            % \includegraphics[width=\textwidth]{pic/benchmark_comparison.png}
+            \fbox{\parbox{0.9\textwidth}{\centering [Benchmark Comparison\\Bar Chart Placeholder]}}
+            \caption{Performance vs. larger models}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Coding Capabilities}
+    \begin{table}
+        \centering
+        \small
+        \begin{tabular}{lccc}
+        \toprule
+        \textbf{Model} & \textbf{HumanEval} & \textbf{MBPP} & \textbf{GSM8K} \\
+        \midrule
+        Llama2-7B & 12.20 & 27.17 & 13.57 \\
+        Mistral-7B & 27.44 & 45.20 & 33.13 \\
+        Gemma-7B & 38.41 & 50.12 & 47.31 \\
+        \rowcolor{yellow!30}
+        \textbf{MiniCPM-2.4B} & \textbf{50.00} & \textbf{47.31} & \textbf{53.83} \\
+        \bottomrule
+        \end{tabular}
+    \end{table}
+    
+    \vspace{0.3cm}
+    \begin{alertblock}{Key Insight}
+    SLMs excel at structured tasks (code, math) despite being 3× smaller!
+    \end{alertblock}
+\end{frame}
+
+\section{Model Wind Tunnel Experiments}
+
+\begin{frame}{Systematic Hyperparameter Optimization}
+    \begin{block}{The Aircraft Analogy}
+    Test small-scale models before building full-scale $\rightarrow$ Optimize hyperparameters efficiently $\rightarrow$ Transfer findings to larger models
+    \end{block}
+    
+    \vspace{0.5cm}
+    \textbf{Three Components:}
+    \begin{enumerate}
+        \item \textbf{Scaling Hyperparameters (Tensor Program)}
+        \begin{itemize}
+            \item Keep learning rates stable across model sizes
+            \item Optimal LR $\approx$ 0.01 for all scales
+        \end{itemize}
+        
+        \item \textbf{Optimal Batch Size}
+        \begin{itemize}
+            \item Found: $\text{bs} = 1.21 \times 10^9 \times L^{6.24}$
+            \item Log-linear relationship
+        \end{itemize}
+        
+        \item \textbf{Learning Rate Stability}
+        \begin{itemize}
+            \item Verified LR consistency using Tensor Program
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Optimal Batch Size Discovery}
+    \begin{figure}
+        \centering
+        % \includegraphics[width=0.8\textwidth]{pic/batch_size_curves.png}
+        \fbox{\parbox{0.75\textwidth}{\centering [Batch Size vs. Loss Curves\\Image Placeholder\\Shows optimal batch size increases as loss decreases]}}
+        \caption{Systematic exploration of batch size vs. loss relationship}
+    \end{figure}
+\end{frame}
+
+\section{WSD Learning Rate Scheduler}
+
+\begin{frame}{The WSD Learning Rate Scheduler}
+    \begin{columns}
+        \column{0.6\textwidth}
+        \textbf{Three Phases:}
+        \begin{enumerate}
+            \item \textbf{Warmup} (0 to W)
+            \begin{itemize}
+                \item LR increases linearly: $\text{LR} = \frac{s}{W} \times \eta_{\max}$
+                \item Example: At step 800 with $W=1600$, LR = $0.5 \times \eta_{\max}$
+            \end{itemize}
+            
+            \item \textbf{Stable} (W to T)
+            \begin{itemize}
+                \item LR = constant $\eta_{\max}$ (typically 0.01)
+                \item Model explores loss landscape
+            \end{itemize}
+            
+            \item \textbf{Decay} (T to S)
+            \begin{itemize}
+                \item Exponential decay: $f(s-T) = 0.5^{(s-T)/T}$
+                \item Sharp loss reduction
+            \end{itemize}
+        \end{enumerate}
+        
+        \column{0.4\textwidth}
+        \begin{figure}
+            \centering
+            % \includegraphics[width=\textwidth]{pic/wsd_schedule.png}
+            \fbox{\parbox{0.9\textwidth}{\centering [WSD Schedule\\Diagram Placeholder\\Show 3 phases]}}
+            \caption{WSD LR schedule}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{WSD vs. Cosine Scheduler}
+    \begin{table}
+        \centering
+        \begin{tabular}{p{3cm}p{4.5cm}p{4.5cm}}
+        \toprule
+        \textbf{Aspect} & \textbf{Cosine LRS} & \textbf{WSD LRS} \\
+        \midrule
+        LR Change & Smooth, continuous & Constant then rapid drop \\
+        Exploration & Mixed with decay & Dedicated stable phase \\
+        Convergence & Gradual decay & Sharp exponential decay \\
+        Checkpoint Reuse & Difficult & Easy \\
+        Efficiency & Requires full retrain & Can experiment with decay \\
+        \bottomrule
+        \end{tabular}
+    \end{table}
+    
+    \vspace{0.3cm}
+    \begin{alertblock}{Key Finding}
+    Only \textbf{10\% of tokens} needed for decay phase to match Cosine performance!
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Training Loss with WSD}
+    \begin{figure}
+        \centering
+        % \includegraphics[width=0.9\textwidth]{pic/wsd_loss_curves.png}
+        \fbox{\parbox{0.85\textwidth}{\centering [Training Loss Curves\\Image Placeholder\\Show dramatic loss drop in decay phase]}}
+        \caption{Loss curves showing dramatic decrease during decay phase}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Decay Phase Analysis}
+    \textbf{What Happens During Decay?}
+    
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Gradient Statistics:}
+        \begin{itemize}
+            \item Gradient norms \textcolor{red}{diminish}
+            \item Cosine similarity becomes \textcolor{deepgreen}{positive}
+            \item Loss curvature \textcolor{blue}{increases significantly}
+        \end{itemize}
+        
+        \vspace{0.5cm}
+        \begin{alertblock}{Key Insight}
+        Despite \textbf{smaller weight updates}, loss \textbf{decreases dramatically}!
+        \end{alertblock}
+        
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            % \includegraphics[width=\textwidth]{pic/gradient_stats.png}
+            \fbox{\parbox{0.9\textwidth}{\centering [Gradient Statistics\\Image Placeholder\\6 subplots]}}
+            \caption{Gradient behavior over training}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+\section{Scaling Law Findings}
+
+\begin{frame}{Critical Discovery: 192:1 Data-to-Model Ratio}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Traditional Wisdom:}
+        \begin{itemize}
+            \item Chinchilla: 20:1 ratio
+            \item "Small models don't need much data"
+        \end{itemize}
+        
+        \vspace{0.5cm}
+        \textbf{MiniCPM Finding:}
+        \begin{itemize}
+            \item \textcolor{red}{\textbf{192:1 ratio}}
+            \item Nearly \textbf{10× more data}!
+        \end{itemize}
+        
+        \vspace{0.5cm}
+        \textbf{Examples:}
+        \begin{itemize}
+            \item 1B model $\rightarrow$ 192B tokens
+            \item 2.4B model $\rightarrow$ 460B tokens
+            \item 7B model $\rightarrow$ 1.3T tokens
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            % \includegraphics[width=\textwidth]{pic/scaling_law_contour.png}
+            \fbox{\parbox{0.9\textwidth}{\centering [Scaling Law Contour\\Image Placeholder\\Show iso-loss curves]}}
+            \caption{Data-model scaling relationship}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Why 192:1 Matters}
+    \begin{block}{Training Efficiency}
+    \begin{itemize}
+        \item Small models benefit more from data than previously thought
+        \item Better to train 1B extensively than 3B on less data
+    \end{itemize}
+    \end{block}
+    
+    \begin{block}{Deployment Efficiency}
+    \begin{itemize}
+        \item Smaller model = \textbf{faster inference}
+        \item Smaller model = \textbf{less memory required}
+        \item Better for edge devices, mobile, personal computers
+    \end{itemize}
+    \end{block}
+    
+    \begin{exampleblock}{Cost Efficiency}
+    Example: 0.036B model matches 0.17B model with:
+    \begin{itemize}
+        \item 4× training compute increase
+        \item \textcolor{red}{\textbf{5× inference cost savings}}
+    \end{itemize}
+    \end{exampleblock}
+\end{frame}
+
+\begin{frame}{The Power Law Relationship}
+    \begin{block}{Mathematical Formulation}
+    \begin{equation}
+    L(N,D) = C_N \times N^{-\alpha} + C_D \times D^{-\beta} + L_0
+    \end{equation}
+    where:
+    \begin{itemize}
+        \item $N$ = model size (parameters)
+        \item $D$ = data size (tokens)
+        \item $\alpha$ = model scaling exponent (\textbf{0.29})
+        \item $\beta$ = data scaling exponent (\textbf{0.23})
+        \item $L_0$ = irreducible minimum loss
+    \end{itemize}
+    \end{block}
+    
+    \vspace{0.3cm}
+    Since $\alpha > \beta$ $\rightarrow$ \textbf{Slightly emphasize data scaling}
+    
+    \vspace{0.3cm}
+    Compute optimal ratio: $\displaystyle\frac{D_{\text{opt}}}{N_{\text{opt}}} = 192$
+\end{frame}
+
+\begin{frame}{Efficient Scaling Law Measurement}
+    \textbf{Traditional Approach:}
+    \begin{itemize}
+        \item Train $m$ model sizes on $m$ data sizes
+        \item Cost: $O(m^2)$ (quadratic!)
+        \item Prohibitively expensive
+    \end{itemize}
+    
+    \vspace{0.5cm}
+    \textbf{WSD Approach:}
+    \begin{itemize}
+        \item Train models to stable phase once
+        \item Reuse checkpoints for different decay schedules
+        \item Cost: $O(m)$ (linear!)
+    \end{itemize}
+    
+    \vspace{0.5cm}
+    \begin{alertblock}{Key Innovation}
+    WSD enables efficient scaling law exploration without full retraining!
+    \end{alertblock}
+\end{frame}
+
+\section{Two-Stage Pre-training}
+
+\begin{frame}{Integrating High-Quality Data During Decay}
+    \textbf{Innovation:} Mix high-quality SFT data during decay phase
+    
+    \vspace{0.5cm}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Two Stages:}
+        \begin{enumerate}
+            \item \textbf{Stable Training}
+            \begin{itemize}
+                \item Large-scale, coarse-quality data
+                \item Abundant for continuous training
+            \end{itemize}
+            
+            \item \textbf{Decay Phase}
+            \begin{itemize}
+                \item Mix high-quality SFT data
+                \item Better alignment with user scenarios
+            \end{itemize}
+        \end{enumerate}
+        
+        \column{0.5\textwidth}
+        \begin{table}
+            \centering
+            \footnotesize
+            \begin{tabular}{lcc}
+            \toprule
+            \textbf{Metric} & \textbf{A-1} & \textbf{A-2} \\
+            \midrule
+            C-Eval & 40.0 & \textbf{52.6} \\
+            CMMLU & 41.5 & \textbf{51.1} \\
+            MMLU & 44.6 & \textbf{50.9} \\
+            \bottomrule
+            \end{tabular}
+            \caption{A-2: with high-quality data in decay}
+        \end{table}
+    \end{columns}
+    
+    \vspace{0.3cm}
+    \textbf{Result:} 10.5\% improvement over separate SFT only!
+\end{frame}
+
+\section{MiniCPM Variants}
+
+\begin{frame}{MiniCPM-DPO: Aligned Version}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Direct Preference Optimization:}
+        \begin{itemize}
+            \item After SFT training
+            \item Dataset: UltraFeedback
+            \item Enhanced code \& math capabilities
+        \end{itemize}
+        
+        \vspace{0.5cm}
+        \textbf{Results:}
+        \begin{itemize}
+            \item MTBench score: \textcolor{red}{\textbf{7.25}}
+            \item Surpasses Llama2-70B-Chat (7.24)
+            \item Despite being \textbf{29× smaller}!
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            % \includegraphics[width=\textwidth]{pic/mtbench_scores.png}
+            \fbox{\parbox{0.9\textwidth}{\centering [MTBench Scores\\Bar Chart Placeholder\\Show MiniCPM-DPO vs. larger models]}}
+            \caption{MTBench comparison}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{MiniCPM-128K: Long Context}
+    \textbf{Challenge:} Extend context from 4,096 to 128,000 tokens
+    
+    \vspace{0.5cm}
+    \textbf{Methods:}
+    \begin{itemize}
+        \item Adjusted Base Frequency (ABF) for 4K-32K
+        \item NTK-Aware RoPE Scaling for 32K-128K
+        \item 44\% long data + 56\% short data
+        \item Synthetic long QA data
+    \end{itemize}
+    
+    \vspace{0.5cm}
+    \textbf{Results on $\infty$Bench:}
+    \begin{itemize}
+        \item Comparable to Mistral-7B-Instruct-128K
+        \item Outperforms ChatGLM3-6B-128K (2.5× smaller)
+        \item Strong long-context reasoning
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{MiniCPM-MoE: Mixture of Experts}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Architecture:}
+        \begin{itemize}
+            \item Total: 13.6B parameters
+            \item Active: 4B per token
+            \item 8 experts, 2 activated
+            \item Sparse Upcycling initialization
+        \end{itemize}
+        
+        \vspace{0.5cm}
+        \textbf{Results:}
+        \begin{itemize}
+            \item On par with \textbf{Llama2-34B}!
+            \item Much more efficient
+            \item Activate only 30\% of parameters
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            % \includegraphics[width=\textwidth]{pic/moe_architecture.png}
+            \fbox{\parbox{0.9\textwidth}{\centering [MoE Architecture\\Diagram Placeholder\\Show expert routing]}}
+            \caption{Mixture of Experts structure}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+\section{Architecture \& Training Details}
+
+\begin{frame}{Model Configuration}
+    \begin{table}
+        \centering
+        \small
+        \begin{tabular}{lcc}
+        \toprule
+        \textbf{Component} & \textbf{MiniCPM-1.2B} & \textbf{MiniCPM-2.4B} \\
+        \midrule
+        Non-embedding params & 1.2B & 2.4B \\
+        Total params & 1.4B & 2.7B \\
+        Hidden dimension & 1,536 & 2,304 \\
+        Layers & 52 & 40 \\
+        Attention heads & 24 & 36 \\
+        Context length & 2,048 & 2,048 \\
+        Batch size & 2M-4M & 4M \\
+        Training tokens & 1.1T & 1.1T \\
+        \bottomrule
+        \end{tabular}
+    \end{table}
+    
+    \vspace{0.3cm}
+    \textbf{Key Design:} Deep-and-thin architecture for efficiency
+\end{frame}
+
+\begin{frame}{Training Data Distribution}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Stable Stage Data:}
+        \begin{itemize}
+            \item CommonCrawl Chinese (25\%)
+            \item Dolma (24\%)
+            \item C4 (15\%)
+            \item Pile (8\%)
+            \item Code, papers, math data
+        \end{itemize}
+        
+        \vspace{0.5cm}
+        \textbf{Decay Stage Data:}
+        \begin{itemize}
+            \item High-quality SFT mixed
+            \item UltraChat, SlimOrca
+            \item Proprietary data (LeetCode, K12)
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            % \includegraphics[width=\textwidth]{pic/data_distribution.png}
+            \fbox{\parbox{0.9\textwidth}{\centering [Data Distribution\\Pie Charts Placeholder\\Stable vs Decay]}}
+            \caption{Training data mixture}
+        \end{figure}
+    \end{columns}
+    
+    \vspace{0.3cm}
+    \textbf{Total:} 1.1 trillion tokens for stable training
+\end{frame}
+
+\section{Key Findings \& Implications}
+
+\begin{frame}{Summary of Key Findings}
+    \begin{enumerate}
+        \item \textbf{SLMs can match LLMs} with proper training strategies
+        \begin{itemize}
+            \item 2.4B model rivals 7B-13B models
+        \end{itemize}
+        
+        \item \textbf{192:1 data-to-model ratio} is compute-optimal
+        \begin{itemize}
+            \item Nearly 10× more data than Chinchilla suggested
+        \end{itemize}
+        
+        \item \textbf{WSD scheduler} enables:
+        \begin{itemize}
+            \item Continuous training
+            \item Efficient experimentation ($O(m)$ vs $O(m^2)$)
+            \item Dramatic loss reduction (10\% decay tokens)
+        \end{itemize}
+        
+        \item \textbf{Small models can absorb} much more data
+        \begin{itemize}
+            \item Better inference efficiency
+            \item Lower deployment costs
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{Implications for Future Research}
+    \begin{block}{Training Strategy}
+    \begin{itemize}
+        \item Invest in data collection, not just model size
+        \item Use WSD scheduler for efficient experiments
+        \item Focus on specialized variants (MoE, DPO, long-context)
+    \end{itemize}
+    \end{block}
+    
+    \begin{block}{Deployment}
+    \begin{itemize}
+        \item Smaller models more practical for edge devices
+        \item Better inference-compute trade-offs
+        \item Democratize AI access
+    \end{itemize}
+    \end{block}
+    
+    \begin{block}{Research Direction}
+    \begin{itemize}
+        \item Apply WSD to larger LLMs
+        \item Explore further data scaling benefits
+        \item Combine with other optimization techniques
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+\section{Limitations \& Conclusion}
+
+\begin{frame}{Limitations}
+    \begin{itemize}[<+-| alert@+>]
+        \item \textbf{LLM Validation Pending}
+        \begin{itemize}
+            \item WSD tested only on SLMs ($<$10B parameters)
+            \item Not yet validated on larger models (70B+)
+        \end{itemize}
+        
+        \item \textbf{Specific Data Dependencies}
+        \begin{itemize}
+            \item Results depend on data quality and diversity
+            \item Tokenizer choice affects efficiency
+            \item Data mixture ratios may vary by domain
+        \end{itemize}
+        
+        \item \textbf{Reproducibility}
+        \begin{itemize}
+            \item Infrastructure differences may affect results
+            \item Hyperparameter transfers need careful attention
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusion}
+    \textbf{MiniCPM demonstrates:}
+    \begin{itemize}[<+-| alert@+>]
+        \item SLMs can rival LLMs with proper training strategies
+        \item Systematic approach beats trial-and-error
+        \item More data beats bigger models in many scenarios
+        \item Efficient training strategies enable rapid experimentation
+    \end{itemize}
+    
+    \vspace{0.5cm}
+    \textbf{Impact:}
+    \begin{itemize}
+        \item Democratizes AI research (smaller models accessible)
+        \item Improves deployment efficiency (edge-friendly)
+        \item Guides future LLM development strategies
+    \end{itemize}
+    
+    \vspace{0.5cm}
+    \textbf{Resources:}
+    \begin{itemize}
+        \item GitHub: \url{https://github.com/OpenBMB/MiniCPM}
+        \item arXiv: 2404.06395
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+        {\Huge\calligra Thank You!}
+        
+        \vspace{1cm}
+        \Large Questions?
+        
+        \vspace{1cm}
+        \normalsize
+        Isaac Kobby Anni \\
+        Computer Science \\
+        Bowling Green State University
+    \end{center}
+\end{frame}
+
+\end{document}
+

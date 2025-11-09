@@ -1,0 +1,794 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Preliminary Exam Presentation Slides
+% Based on BGSU beamer theme                          
+% Author: Isaac Kobby Anni                           
+% Date: January 2025                                 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[serif, aspectratio=169]{beamer}
+\usepackage[T1]{fontenc} 
+\usepackage{fourier}
+\usepackage{hyperref}
+\usepackage{latexsym,amsmath,xcolor,multicol,booktabs,calligra}
+\usepackage{graphicx,pstricks,listings,stackengine}
+\usepackage{lipsum}
+
+\author{Isaac Kobby Anni}
+\title{Preliminary Exam Presentation}
+\subtitle{Critical Reviews of Selected Papers on Agentic AI \& SLMs}
+\institute{
+    Department of Computer Science \\
+    Bowling Green State University
+}
+\date{\small \today}
+\usepackage{UoWstyle}
+
+% defs
+\def\cmd#1{\texttt{\color{brown}\footnotesize $\backslash$#1}}
+\def\env#1{\texttt{\color{blue}\footnotesize #1}}
+\definecolor{brown}{rgb}{0,0,0.5}
+\definecolor{deepred}{RGB}{153,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+\definecolor{halfgray}{gray}{0.55}
+\definecolor{deepblue}{RGB}{0,0,153}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\bfseries\color{deepblue},
+    emphstyle=\ttfamily\color{deepred},
+    stringstyle=\color{deepgreen},
+    numbers=left,
+    numberstyle=\small\color{halfgray},
+    rulesepcolor=\color{red!20!green!20!blue!20},
+    frame=shadowbox,
+}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+    \vspace*{-0.6cm}
+    \begin{center}
+        \textbf{Prelim Committee:} \\
+        Dr. Md Main Uddin Rony, Chair \\
+        Prof. Dasigi \\
+        Prof. Robert Green \\
+        Dr. Umar Islambekov \\
+        Dr. Sara Slitter
+    \end{center}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Presentation Overview}
+    \begin{itemize}
+        \item \textbf{Introduction:} Agentic AI Landscape and Research Motivation
+        \item \textbf{Paper 1:} CAAFE - Context-Aware Automated Feature Engineering
+        \item \textbf{Paper 2:} Small Language Models are the Future of Agentic AI
+        \item \textbf{Paper 3:} MiniCPM - Scalable Training Strategies for SLMs
+        \item \textbf{Synthesis:} Research Plan and Dissertation Direction
+    \end{itemize}
+\end{frame}
+
+\begin{frame}    
+\tableofcontents[sectionstyle=show,
+subsectionstyle=show/shaded/hide,
+subsubsectionstyle=show/shaded/hide]
+\end{frame}
+
+\section{Introduction}
+
+\begin{frame}{Research Context}
+    \begin{block}{The Agentic AI Evolution}
+    \begin{itemize}[<+-| alert@+>]
+        \item Rapid transition from proof-of-concept to production systems
+        \item Fundamental questions about optimal architectures and deployment
+        \item Need for efficient, cost-effective, privacy-preserving AI agents
+    \end{itemize}
+    \end{block}
+    
+    \begin{alertblock}{Core Research Question}
+    How can we build practical, deployable agentic systems that balance capability, efficiency, and cost—particularly for privacy-sensitive applications?
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Three Papers - Complementary Perspectives}
+    \begin{enumerate}
+        \item \textbf{CAAFE (NeurIPS 2023)}
+        \begin{itemize}
+            \item Automated feature engineering through LLM interfaces
+            \item Code-as-interface paradigm for data science
+        \end{itemize}
+        
+        \item \textbf{Small LMs for Agentic AI (NVIDIA 2025)}
+        \begin{itemize}
+            \item Economic and operational advantages of SLMs
+            \item Heterogeneous architectures for agentic systems
+        \end{itemize}
+        
+        \item \textbf{MiniCPM (arXiv 2024)}
+        \begin{itemize}
+            \item Scalable training strategies for efficient SLMs
+            \item Wind tunnel experiments and WSD scheduling
+        \end{itemize}
+    \end{enumerate}
+    
+    \vspace{0.5cm}
+    \textbf{Collective Insight:} SLM-first agentic architectures for edge computing and privacy-sensitive applications
+\end{frame}
+
+\begin{frame}{My Dissertation Research}
+    \begin{block}{Research Focus}
+    Developing \emph{SLM-first agentic architectures} through three coordinated projects:
+    \begin{enumerate}
+        \item \textbf{SLM-First Automated Feature Engineering} (CAAFE-style)
+        \item \textbf{SLM-First Case-Based Reasoning} for automated model development
+        \item \textbf{SLM-Powered Multi-Agent AutoML} orchestration
+    \end{enumerate}
+    \end{block}
+    
+    \begin{alertblock}{Goal}
+    Achieve LLM-level performance with 10×+ cost reduction, privacy-preserving deployment, and sub-300ms latency for edge computing environments
+    \end{alertblock}
+\end{frame}
+
+\section{Paper 1: CAAFE}
+
+\begin{frame}{CAAFE: Context-Aware Automated Feature Engineering}
+    \begin{itemize}
+        \item \textbf{Authors:} Noah Hollmann; Samuel Müller; Frank Hutter
+        \item \textbf{Venue:} NeurIPS 2023
+        \item \textbf{Key Contribution:} LLM-powered automated feature engineering with semantic understanding
+    \end{itemize}
+    
+    \vspace{0.5cm}
+    \begin{block}{The Problem}
+    AutoML optimizes model selection/training (\textasciitilde 23\% of data scientist time), but feature engineering remains manual and time-consuming
+    \end{block}
+\end{frame}
+
+\begin{frame}{CAAFE: Problem Setup}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Current Limitations:}
+        \begin{itemize}
+            \item Traditional AutoML lacks semantic understanding
+            \item DFS, AutoFeat use mathematical transformations only
+            \item No domain knowledge integration
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \textbf{CAAFE Solution:}
+        \begin{itemize}
+            \item LLM semantic understanding
+            \item Context-aware feature generation
+            \item Classical ML validation
+            \item Human-readable explanations
+        \end{itemize}
+    \end{columns}
+    
+    \vspace{0.3cm}
+    \begin{figure}
+        \centering
+        \fbox{\parbox{0.8\textwidth}{\centering [Context Benefit Example\\Image Placeholder\\Shows how contextual information simplifies feature engineering tasks]}}
+        \caption{Contextual information simplifies feature engineering}
+    \end{figure}
+    
+    \begin{alertblock}{Key Insight}
+    Bridge LLM semantic capabilities with traditional ML reliability through code generation
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{CAAFE: Methodology}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Iterative Process:}
+        \begin{enumerate}
+            \item \textbf{Prompt Construction:} Dataset context + user description + sample data
+            \item \textbf{Code Generation:} LLM generates Python feature engineering code
+            \item \textbf{Execution:} Safe sandbox execution on train/validation sets
+            \item \textbf{Validation:} Cross-validation performance assessment
+            \item \textbf{Acceptance:} Retain only if performance improves
+        \end{enumerate}
+        
+        \vspace{0.3cm}
+        \textbf{Safety Mechanisms:}
+        \begin{itemize}
+            \item Whitelisted operations only
+            \item Error recovery with feedback loops
+            \item Resource management
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \fbox{\parbox{0.9\textwidth}{\centering [CAAFE Workflow Diagram\\Image Placeholder\\Shows iterative feature engineering process with validation loop]}}
+            \caption{CAAFE iterative workflow}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{CAAFE: Results}
+    \begin{table}
+        \centering
+        \small
+        \begin{tabular}{lcc}
+        \toprule
+        \textbf{Metric} & \textbf{Baseline} & \textbf{CAAFE} \\
+        \midrule
+        Datasets with improvement & 0/14 & 11/14 \\
+        Mean ROC AUC & 0.798 & \textcolor{deepgreen}{\textbf{0.822}} \\
+        Improvement magnitude & -- & +0.024 \\
+        \midrule
+        Error recovery rate & -- & 7.4\% \\
+        \bottomrule
+        \end{tabular}
+        \caption{Performance improvements across 14 datasets}
+    \end{table}
+    
+    \vspace{0.3cm}
+    \begin{block}{Feature Generation Patterns}
+    Feature combinations, discretization, string processing, automatic feature selection
+    \end{block}
+    
+    \begin{alertblock}{Comparison}
+    Improvement comparable to switching from logistic regression to random forest
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{CAAFE: Key Takeaways}
+    \begin{enumerate}
+        \item \textbf{Language-to-code agency} enables semantic feature engineering
+        \item \textbf{Iterative validation} creates natural safety mechanisms
+        \item \textbf{Modular architecture} integrates with existing AutoML
+        \item \textbf{SLM potential} for specialized feature engineering tasks
+    \end{enumerate}
+    
+    \vspace{0.5cm}
+    \begin{block}{Connection to My Research}
+    The code-as-interface paradigm and controller-mediated architecture align perfectly with SLM-first agentic systems for privacy-preserving applications
+    \end{block}
+\end{frame}
+
+\section{Paper 2: SLMs for Agentic AI}
+
+\begin{frame}{Small Language Models: Future of Agentic AI}
+    \begin{itemize}
+        \item \textbf{Authors:} Peter Belcak et al. (NVIDIA Research)
+        \item \textbf{Year:} 2025 (preprint)
+        \item \textbf{Key Thesis:} SLMs are optimal for most agentic workflows, not LLMs
+    \end{itemize}
+    
+    \vspace{0.5cm}
+    \begin{alertblock}{Industry Context}
+    \begin{itemize}
+        \item \$5.2B market (projected \$200B by 2034)
+        \item Over 50\% of large IT enterprises deploying AI agents
+        \item Current default: LLMs (potentially misaligned choice)
+    \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{The Core Argument}
+    \begin{block}{Current Assumption}
+    Agentic systems need LLMs for broad conversational capabilities and world knowledge
+    \end{block}
+    
+    \begin{block}{Reality}
+    Most agentic workflows decompose into:
+    \begin{itemize}
+        \item Tool calling (narrow scope)
+        \item Data extraction (deterministic)
+        \item Format transformation (structured)
+        \item Reasoning (task-specific)
+    \end{itemize}
+    \textbf{These demand precision and efficiency, not conversational fluency}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Three Evaluation Dimensions}
+    \begin{table}
+        \centering
+        \small
+        \begin{tabular}{lcc}
+        \toprule
+        \textbf{Dimension} & \textbf{Key Metrics} & \textbf{SLM Advantage} \\
+        \midrule
+        Capability Sufficiency & Task performance, accuracy & Parity with 3-10× larger models \\
+        Economic Viability & Serving cost, fine-tuning time & 10-30× lower cost, hours vs. weeks \\
+        Operational Suitability & Latency, observability & Real-time, better debugging \\
+        \bottomrule
+        \end{tabular}
+        \caption{SLM evaluation framework}
+    \end{table}
+    
+    \vspace{0.3cm}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Examples:}
+        \begin{itemize}
+            \item Phi-2 (2.7B): Matches 30B, 15× faster
+            \item Phi-3 (7B): Comparable to 70B
+            \item Nemotron-H (2-9B): 30B performance, 10× fewer FLOPs
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \fbox{\parbox{0.9\textwidth}{\centering [SLM vs LLM Comparison\\Image Placeholder\\Shows cost, latency, and capability trade-offs]}}
+            \caption{SLM advantages visualization}
+        \end{figure}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Agentic Architectures}
+    \begin{figure}
+        \centering
+        \fbox{\parbox{0.9\textwidth}{\centering [Agentic Architecture Diagrams\\Image Placeholder\\Left: Direct LM-to-Tool Interaction\\Right: Controller-Mediated Interaction]}}
+        \caption{Two architectural patterns for agentic AI systems}
+    \end{figure}
+    
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Direct LM-to-Tool:}
+        \begin{itemize}
+            \item LM as interface and orchestrator
+            \item Direct tool management
+            \item Maximum flexibility
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \textbf{Controller-Mediated:}
+        \begin{itemize}
+            \item Dedicated controller code
+            \item Routes to specialized SLMs
+            \item Better debugging and observability
+        \end{itemize}
+    \end{columns}
+    
+    \begin{alertblock}{Heterogeneous Systems}
+    Both support SLM-first design with LLM escalation for complex tasks
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Empirical Evidence}
+    \begin{table}
+        \centering
+        \small
+        \begin{tabular}{lcc}
+        \toprule
+        \textbf{Model} & \textbf{Size} & \textbf{Achievement} \\
+        \midrule
+        DeepSeek-R1-Distill & 1.5-8B & Outperforms Claude-3.5-Sonnet, GPT-4o (commonsense) \\
+        xLAM-2-8B & 8B & SOTA on tool calling \\
+        Phi-2 & 2.7B & Matches 30B models, 15× faster \\
+        Phi-3 & 7B & Comparable to 70B models \\
+        Nemotron-H & 2-9B & Dense 30B performance, 10× fewer FLOPs \\
+        \bottomrule
+        \end{tabular}
+        \caption{SLM performance on agentic-relevant tasks}
+    \end{table}
+    
+    \vspace{0.3cm}
+    \begin{block}{LLM-to-SLM Conversion Algorithm}
+    Collect usage data $\rightarrow$ Cluster tasks $\rightarrow$ Fine-tune specialized SLMs $\rightarrow$ Iterative refinement
+    \end{block}
+\end{frame}
+
+\begin{frame}{SLMs for Agentic AI: Key Takeaways}
+    \begin{enumerate}
+        \item Capability gaps between SLMs and LLMs are \textbf{narrowing rapidly}
+        \item Economic advantages of SLMs are \textbf{substantial and growing}
+        \item Heterogeneous architectures provide \textbf{practical path forward}
+        \item Current LLM-centric approach may be \textbf{suboptimal}
+    \end{enumerate}
+    
+    \vspace{0.5cm}
+    \begin{block}{Connection to My Research}
+    Directly supports my SLM-first agenda with theoretical justification and practical implementation guidance for edge computing and privacy-sensitive applications
+    \end{block}
+\end{frame}
+
+\section{Paper 3: MiniCPM}
+
+\begin{frame}{MiniCPM: Unveiling SLM Potential}
+    \begin{itemize}
+        \item \textbf{Authors:} Shengding Hu et al.
+        \item \textbf{Publication:} arXiv:2404.06395 (2024)
+        \item \textbf{Key Achievement:} 1.2B and 2.4B models comparable to 7B-13B models
+    \end{itemize}
+    
+    \vspace{0.5cm}
+    \begin{block}{The Challenge}
+    \begin{itemize}
+        \item Trillion-parameter models: prohibitive costs
+        \item Limited accessibility
+        \item Deployment challenges for edge devices
+        \item Environmental sustainability concerns
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Three Major Contributions}
+    \begin{enumerate}
+        \item \textbf{Model Wind Tunnel Experiments (MWTE)}
+        \begin{itemize}
+            \item Systematic hyperparameter optimization on SLMs
+            \item Transfer insights to larger models
+            \item Like aircraft development: test small-scale first
+        \end{itemize}
+        
+        \item \textbf{Warmup-Stable-Decay (WSD) Scheduler}
+        \begin{itemize}
+            \item Three-phase learning rate schedule
+            \item Enables continuous training
+            \item 10\% of tokens for decay phase (vs. full retrain)
+        \end{itemize}
+        
+        \item \textbf{Efficient Scaling Law Measurement}
+        \begin{itemize}
+            \item Cost: $O(m^2) \rightarrow O(m)$
+            \item 192:1 data-to-model ratio (vs. Chinchilla's 20:1)
+        \end{itemize}
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}{WSD Learning Rate Scheduler}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Three Phases:}
+        \begin{enumerate}
+            \item \textbf{Warmup} (0 to W)
+            \begin{itemize}
+                \item Linear increase: $\text{LR} = \frac{s}{W} \times \eta$
+            \end{itemize}
+            
+            \item \textbf{Stable} (W to T)
+            \begin{itemize}
+                \item Constant LR = $\eta$
+                \item Extensive exploration
+            \end{itemize}
+            
+            \item \textbf{Decay} (T to S)
+            \begin{itemize}
+                \item Exponential decay: $f(s-T) \times \eta$
+                \item Sharp loss reduction
+            \end{itemize}
+        \end{enumerate}
+        
+        \begin{equation*}
+        \text{WSD}(T; s) = \begin{cases}
+        \frac{s}{W}\eta, & \text{if } s < W \\
+        \eta, & \text{if } W < s < T \\
+        f(s-T)\eta, & \text{if } T < s < S
+        \end{cases}
+        \end{equation*}
+        
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \fbox{\parbox{0.9\textwidth}{\centering [WSD Schedule Diagram\\Image Placeholder\\Shows learning rate over training steps with 3 phases\\Dramatic loss reduction in decay phase]}}
+            \caption{WSD learning rate schedule and training dynamics}
+        \end{figure}
+        
+        \begin{alertblock}{Key Finding}
+        Only \textbf{10\% of tokens} needed for decay to match Cosine performance!
+        \end{alertblock}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Critical Discovery: 192:1 Data-to-Model Ratio}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \begin{table}
+            \centering
+            \small
+            \begin{tabular}{lcc}
+            \toprule
+            \textbf{Approach} & \textbf{Ratio} & \textbf{Example} \\
+            \midrule
+            Chinchilla & 20:1 & 1B $\rightarrow$ 20B tokens \\
+            \rowcolor{yellow!30}
+            \textbf{MiniCPM} & \textbf{192:1} & \textbf{1B $\rightarrow$ 192B tokens} \\
+            \bottomrule
+            \end{tabular}
+        \end{table}
+        
+        \vspace{0.3cm}
+        \begin{block}{MiniCPM Finding}
+        Optimal ratio: \textbf{192:1} (nearly 10× more data!)
+        \begin{itemize}
+            \item 1B model $\rightarrow$ 192B tokens
+            \item 2.4B model $\rightarrow$ 460B tokens
+        \end{itemize}
+        \end{block}
+        
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \fbox{\parbox{0.9\textwidth}{\centering [Scaling Law Contour Plot\\Image Placeholder\\Shows iso-loss curves for data-model scaling\\Demonstrates 192:1 optimal ratio]}}
+            \caption{Data-model scaling relationship}
+        \end{figure}
+        
+        \begin{alertblock}{Implication}
+        Better to train 1B extensively than 3B on less data
+        \end{alertblock}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{MiniCPM Performance Results}
+    \begin{table}
+        \centering
+        \footnotesize
+        \begin{tabular}{lcccc}
+        \toprule
+        \textbf{Benchmark} & \textbf{MiniCPM-2.4B} & \textbf{Mistral-7B} & \textbf{Llama-7B} & \textbf{Rank} \\
+        \midrule
+        C-Eval & \textcolor{deepgreen}{\textbf{51.13}} & -- & -- & \#1 (2B) \\
+        CMMLU & \textcolor{deepgreen}{\textbf{51.07}} & -- & -- & \#1 (2B) \\
+        MMLU & 53.46 & 52.2 & 35.1 & $\uparrow$ \\
+        HumanEval & \textcolor{deepgreen}{\textbf{50.00}} & 27.44 & 12.20 & $\uparrow$ \\
+        MBPP & 47.31 & 45.20 & 27.17 & $\uparrow$ \\
+        MATH & 10.24 & 13.02 & 13.57 & -- \\
+        \bottomrule
+        \end{tabular}
+        \caption{MiniCPM-2.4B benchmark performance (percentage scores)}
+    \end{table}
+    
+    \vspace{0.2cm}
+    \begin{table}
+        \centering
+        \footnotesize
+        \begin{tabular}{lcc}
+        \toprule
+        \textbf{Variant} & \textbf{Key Feature} & \textbf{Achievement} \\
+        \midrule
+        MiniCPM-DPO & Aligned version & MTBench 7.25 (surpasses Llama2-70B-Chat) \\
+        MiniCPM-128K & Long context & 128K tokens, comparable to Mistral-7B-128K \\
+        MiniCPM-MoE & Mixture of Experts & 4B active, matches Llama2-34B \\
+        \bottomrule
+        \end{tabular}
+        \caption{Specialized MiniCPM variants}
+    \end{table}
+\end{frame}
+
+\begin{frame}{MiniCPM: Key Takeaways}
+    \begin{enumerate}
+        \item \textbf{Systematic hyperparameter optimization} dramatically improves SLM performance
+        \item \textbf{WSD scheduler} enables efficient continuous training
+        \item \textbf{Small models can absorb} significantly more data than previously assumed
+        \item \textbf{Well-designed SLMs} can achieve LLM-level performance
+    \end{enumerate}
+    
+    \vspace{0.5cm}
+    \begin{block}{Connection to My Research}
+    Provides systematic methodology for optimizing SLM training and deployment strategies, directly applicable to domain-specific SLMs for healthcare and campus analytics
+    \end{block}
+\end{frame}
+
+\section{Synthesis \& Research Plan}
+
+\begin{frame}{Overall Research Objectives}
+    \begin{block}{Primary Goals}
+    \begin{itemize}
+        \item Develop SLM-first pipelines matching LLM baselines on scoped tasks
+        \item Achieve substantial cost/latency reductions (target: 10× cost reduction, sub-300ms latency)
+        \item Establish verifiable, code-centric agent loops with programmatic validation
+        \item Demonstrate institution-grade deployment with strict data governance
+    \end{itemize}
+    \end{block}
+    
+    \begin{alertblock}{Success Criteria}
+    \begin{itemize}
+        \item Accuracy parity on scoped tasks
+        \item $\geq$ 10× cost reduction
+        \item Reproducibility and explainability
+    \end{itemize}
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Project 1: SLM-First Automated Feature Engineering}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Problem:} AutoML advances contrast with persistent manual feature engineering burden
+        
+        \vspace{0.3cm}
+        \textbf{Approach:}
+        \begin{itemize}
+            \item Controller-mediated architecture
+            \item Routes to specialized SLMs (temporal, categorical, numerical)
+            \item Generates pandas code with CAAFE-style validation
+            \item Escalation gate to larger models after repeated failures
+        \end{itemize}
+        
+        \vspace{0.3cm}
+        \textbf{Evaluation:} CAAFE evaluation datasets (OpenML: airlines, balance-scale, breast-w, cmc, credit-g, diabetes, eucalyptus, jungle\_chess, pc1, tic-tac-toe; Kaggle: health-insurance, pharyngitis, kidney-stone, spaceship-titanic) plus synthetic institutional surrogates; compare against DFS/AutoFeat and LLM-based CAAFE
+        
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \fbox{\parbox{0.9\textwidth}{\centering [Project 1 Architecture\\Image Placeholder\\Shows controller routing to specialized SLMs\\Feature generation and validation pipeline]}}
+            \caption{SLM-first feature engineering architecture}
+        \end{figure}
+    \end{columns}
+    
+    \vspace{0.2cm}
+    \textbf{Expected Outcome:} Comparable accuracy with lower cost/latency; interpretable feature libraries
+\end{frame}
+
+\begin{frame}{Project 2: SLM-First Case-Based Reasoning}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Problem:} Automated ML pipeline development requires extensive expert knowledge; LLM agents struggle with hallucination
+        
+        \vspace{0.3cm}
+        \textbf{Approach:}
+        \begin{itemize}
+            \item Two-stage CBR architecture
+            \item Development: Build case bank; SLM retriever (1.5B) + revisor (3.8B)
+            \item Deployment: Simplified CBR with adapter SLM (one-pass generation)
+            \item Controller coordinates agents with escalation
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \fbox{\parbox{0.9\textwidth}{\centering [Project 2 CBR Architecture\\Image Placeholder\\Shows two-stage process: development and deployment\\Case bank, retrieval, and adaptation pipeline]}}
+            \caption{SLM-first case-based reasoning system}
+        \end{figure}
+    \end{columns}
+    
+    \vspace{0.2cm}
+    \textbf{Evaluation:} 30 public datasets (12 development, 18 deployment); compare against DS-Agent and zero-shot baselines
+    
+    \textbf{Expected Outcome:} 85\%+ deployment one-pass success rate at 10-100× lower cost
+\end{frame}
+
+\begin{frame}{Project 3: SLM-Powered Multi-Agent AutoML}
+    \begin{columns}
+        \column{0.5\textwidth}
+        \textbf{Problem:} End-to-end AutoML requires coordination across preprocessing, feature engineering, model selection, tuning, evaluation
+        
+        \vspace{0.3cm}
+        \textbf{Approach:}
+        \begin{itemize}
+            \item Heterogeneous SLM agent system (TaskWeaver-style)
+            \item Specialized agents: Data (1.5B), Feature (2B), Model (3.8B), Hyperparameter (2B), Evaluator (1.5B)
+            \item Planner Agent (3.8B) routes tasks and manages dependencies
+            \item Sandboxed execution with structured communication
+        \end{itemize}
+        
+        \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \fbox{\parbox{0.9\textwidth}{\centering [Project 3 Multi-Agent System\\Image Placeholder\\Shows planner agent coordinating specialized agents\\Task graph and dependency management]}}
+            \caption{Multi-agent AutoML orchestration}
+        \end{figure}
+    \end{columns}
+    
+    \vspace{0.2cm}
+    \textbf{Evaluation:} OpenML/UCI datasets; compare against AutoGluon, H2O AutoML, single-agent LLM
+    
+    \textbf{Expected Outcome:} Automated pipelines rivaling AutoML baselines with sub-5 minute runtime
+\end{frame}
+
+\begin{frame}{Cross-Cutting Methods: Training \& Methodology}
+    \begin{block}{Training Strategy}
+    \begin{itemize}
+        \item Apply wind tunnel experiments for hyperparameter transfer
+        \item Use WSD scheduling for efficient continuous training
+        \item Rapid decay-phase experimentation
+        \item Domain-specific fine-tuning with parameter-efficient techniques (LoRA, DoRA)
+    \end{itemize}
+    \end{block}
+    
+    \begin{block}{Safety and Governance}
+    \begin{itemize}
+        \item Programmatic verification (schema checks, KG-backed fact checks)
+        \item Privacy-preserving logging and on-premise deployment
+        \item Cost/latency dashboards for monitoring
+        \item Sandboxed code execution with whitelisted operations
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Cross-Cutting Methods: Milestones \& Deliverables}
+    \begin{block}{Research Milestones}
+    \begin{itemize}
+        \item Per-project prototypes with documented APIs
+        \item Comprehensive evaluation reports (SLM-first vs. LLM baselines)
+        \item Reproducible experimental frameworks
+        \item Open-source artifacts where permissible
+    \end{itemize}
+    \end{block}
+    
+    \begin{block}{Evaluation Metrics}
+    \begin{itemize}
+        \item Accuracy/performance parity on scoped tasks
+        \item Cost reduction (target: $\geq$ 10×)
+        \item Latency (target: sub-300ms median)
+        \item Reproducibility and explainability (citations, code, KG links)
+    \end{itemize}
+    \end{block}
+    
+    \begin{alertblock}{Success Criteria}
+    All projects must demonstrate: accuracy parity, cost efficiency, and deployment feasibility
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Research Contributions}
+    \begin{block}{Methodological Contributions}
+    \begin{itemize}
+        \item Systematic SLM-first agentic architecture design
+        \item Controller-mediated heterogeneous systems
+        \item Wind tunnel experiments for SLM optimization
+    \end{itemize}
+    \end{block}
+    
+    \begin{block}{Practical Contributions}
+    \begin{itemize}
+        \item Demonstrated cost/latency advantages (10×+ reduction)
+        \item Privacy-preserving deployment patterns
+        \item Reproducible evaluation frameworks
+    \end{itemize}
+    \end{block}
+    
+    \begin{block}{Application Impact}
+    \begin{itemize}
+        \item Healthcare analytics (privacy-sensitive)
+        \item Educational systems (resource-constrained)
+        \item Campus analytics (on-premise deployment)
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+\section{Conclusion}
+
+\begin{frame}{Summary of Key Insights}
+    \begin{enumerate}
+        \item \textbf{CAAFE} demonstrates code-as-interface paradigm for semantic feature engineering
+        \item \textbf{SLMs for Agentic AI} shows economic and operational advantages with capability parity
+        \item \textbf{MiniCPM} provides systematic training strategies for efficient SLM development
+    \end{enumerate}
+    
+    \vspace{0.5cm}
+    \begin{alertblock}{Unified Vision}
+    SLM-first agentic architectures enable efficient, privacy-preserving, cost-effective AI deployment for critical applications
+    \end{alertblock}
+\end{frame}
+
+\begin{frame}{Next Steps}
+    \begin{block}{Immediate Actions}
+    \begin{itemize}
+        \item Implement Project 1 prototype (SLM-first feature engineering)
+        \item Establish evaluation framework and baselines
+        \item Begin case bank construction for Project 2
+    \end{itemize}
+    \end{block}
+    
+    \begin{block}{Long-term Vision}
+    \begin{itemize}
+        \item Complete all three projects with comprehensive evaluation
+        \item Publish findings in top-tier venues
+        \item Contribute to open-source ecosystem
+        \item Enable widespread adoption of efficient agentic AI
+    \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \begin{center}
+        {\Huge\calligra Thank You!}
+        
+        \vspace{1cm}
+        \Large Questions \& Discussion
+        
+        \vspace{1cm}
+        \normalsize
+        Isaac Kobby Anni \\
+        Department of Computer Science \\
+        Bowling Green State University
+    \end{center}
+\end{frame}
+
+\end{document}
+

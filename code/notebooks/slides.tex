@@ -1,0 +1,332 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% A Beamer template for University of Wollongong     %
+% Based on THU beamer theme                          %
+% Author: Qiuyu Lu                                   %
+% Date: July 2024                                    %
+% LPPL Licensed.                                     %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[serif, aspectratio=169]{beamer}
+%\documentclass[serif]{beamer}  % for 4:3 ratio
+\usepackage[T1]{fontenc} 
+\usepackage{fourier} % see "http://faq.ktug.org/wiki/uploads/MathFonts.pdf" for other options
+\usepackage{hyperref}
+\usepackage{latexsym,amsmath,xcolor,multicol,booktabs,calligra}
+\usepackage{graphicx,pstricks,listings,stackengine}
+\usepackage{lipsum}
+
+\author{Isaac Kobby Anni}
+\title{BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding}
+\subtitle{Paper Presentation}
+\institute{
+    Computer Science \\
+    Bowling Green State University
+}
+\date{\small \today}
+\usepackage{UoWstyle}
+
+% defs
+\def\cmd#1{\texttt{\color{brown}\footnotesize $\backslash$#1}}
+\def\env#1{\texttt{\color{blue}\footnotesize #1}}
+\definecolor{brown}{rgb}{0,0,0.5}
+\definecolor{deepred}{RGB}{153,0,0}
+\definecolor{deepgreen}{rgb}{0,0.5,0}
+\definecolor{halfgray}{gray}{0.55}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\bfseries\color{deepblue},
+    emphstyle=\ttfamily\color{deepred},    % Custom highlighting style
+    stringstyle=\color{deepgreen},
+    numbers=left,
+    numberstyle=\small\color{halfgray},
+    rulesepcolor=\color{red!20!green!20!blue!20},
+    frame=shadowbox,
+}
+
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+    \vspace*{-0.6cm}
+    \begin{figure}[htpb]
+        \begin{center}
+            % \includegraphics[keepaspectratio, scale=0.2]{pic/image.png}
+        \end{center}
+    \end{figure}
+\end{frame}
+
+\begin{frame}    
+\tableofcontents[sectionstyle=show,
+subsectionstyle=show/shaded/hide,
+subsubsectionstyle=show/shaded/hide]
+\end{frame}
+
+\section{Background}
+
+\begin{frame}{Prerequisite}
+    \begin{itemize}[<+-| alert@+>] % stepwise alerts
+        \item Knowledge of recurrent neural networks and how they work.
+        \item Attention is all you need paper. 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Introduction}
+    \begin{itemize}[<+-| alert@+>] % stepwise alerts
+        \item RNNs like LSTM and GRU were established as the state of the art for sequence modeling. 
+        \item For problems like language modeling and machine translation. 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Introduction}
+    \begin{figure}[h]
+            \centering
+            \includegraphics[width = 8cm, height = 5cm]{pic/rnn.PNG}
+            \caption{Workflow of RNN: \textit{photo credit, Umar Jamil}}
+        \end{figure}
+\end{frame}
+
+\begin{frame}{Introduction}
+    \begin{itemize}[<+-| alert@+>] % stepwise alerts
+        \item Problem as sequence length increases; 
+        \item[i] Slow computation
+        \item[ii] Varnishing and Exploding gradients
+        \item[iii] Difficulty in accessing information from longer past time step
+    \end{itemize}
+\end{frame}
+
+
+\section{Introducing Transformer}
+
+\subsection{Attention is all you need. }
+
+\begin{frame}{Transformer Architecture}
+    \begin{figure}[h]
+            \centering
+            \includegraphics[width = 10cm, height = 6cm]{pic/trans.PNG}
+            \caption{Transformer Model: \textit{photo credit, Attention paper}}
+        \end{figure}
+\end{frame}
+
+\begin{frame}{The Encoder}
+    \begin{figure}[h]
+            \centering
+            \includegraphics[width = 10cm, height = 6cm]{pic/encoder.PNG}
+            \caption{Transformer Model: \textit{photo credit, Attention paper}}
+        \end{figure}
+\end{frame}
+
+\begin{frame}{Input Embedding}
+    \begin{figure}[h]
+            \centering
+            \includegraphics[width = 13cm, height = 1cm]{pic/embed-1.PNG}
+            \caption{Document Representation: \textit{photo credit, Umar Jamil}}
+    \end{figure}
+\end{frame}
+\begin{frame}{Input Embedding}
+    \begin{figure}[h]
+            \centering
+            \includegraphics[width = 13cm, height = 2cm]{pic/embed-2.PNG}
+            \caption{Document Representation}
+    \end{figure}
+\end{frame}
+\begin{frame}{Input Embedding}
+    \begin{figure}[h]
+            \centering
+            \includegraphics[width = 13cm, height = 4cm]{pic/embed-3.PNG}
+            \caption{Document Representation}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Positional Embedding}
+    \begin{figure}[h]
+            \centering
+            \includegraphics[width = 12cm, height = 7cm]{pic/pos-end.png}
+            \caption{Document Representation}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Positional Embedding}
+    \begin{itemize}[<+-| alert@+>] % stepwise alerts
+        \item Addressing the sequential encoding like in RNNs; 
+        \item[i] Position of each word in the document. 
+        \item[ii] Treating words that are close as "close" and distant as "distant"
+        \item[iii] Position encoding portray patterns learned by the model. 
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Positional Embedding}
+    \begin{figure}[h]
+            \centering
+            \includegraphics[width = 13cm, height = 2cm]{pic/embed-2.PNG}
+            \caption{Document Representation}
+    \end{figure}
+\end{frame}
+\begin{frame}{Positional Embedding}
+    \begin{figure}[h]
+            \centering
+            \includegraphics[width = 13cm, height = 5cm]{pic/pos_e.png}
+            \caption{Document Representation}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Positional Embedding Calculation}
+    \begin{figure}[h]
+            \centering
+            \includegraphics[width = 13cm, height = 6cm]{pic/pos_encod.png}
+            \caption{Document Representation}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Attention Mechanism}
+    \begin{figure}[h]
+            \centering
+            \includegraphics[width = 12cm, height = 7cm]{pic/attn.png}
+            \caption{Multi-Head Attention}
+    \end{figure}
+\end{frame}
+\begin{frame}{Attention Mechanism}
+    \begin{figure}[h]
+            \centering
+            \includegraphics[width = 13cm, height = 5cm]{pic/self-attn.png}
+            \caption{Self Attention computation}
+    \end{figure}
+\end{frame}
+\begin{frame}{Attention Mechanism}
+    \begin{figure}[h]
+            \centering
+            \includegraphics[width = 13cm, height = 5cm]{pic/self-attn-2.png}
+            \caption{Self Attention computation}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Properties of Self Atention}
+    \begin{itemize}[<+-| alert@+>]
+        \item No requires no parameter(s)
+        \item Values along diagonals are higher. 
+        \item Can switch off word interactions. etc
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Self-Attention Computation}
+    
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includegraphics[width=5cm, height=4cm]{pic/softmax.png}
+        %\captionof{fig}{Softmax function}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.48\linewidth}
+        \centering
+        \includegraphics[width=5cm, height=5cm]{pic/attn-calc.png}
+        %\captionof{ }{Attention computation}
+    \end{minipage}
+    
+\end{frame}
+
+\begin{frame}{Attention Mechanism}
+    \begin{figure}[h]
+            \centering
+            \includegraphics[width = 13cm, height = 5cm]{pic/MHA.png}
+            \caption{Multi-Head Attention}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Multi-Head Attention Mechanism - DECODER}
+    \begin{figure}[h]
+            \centering
+            \includegraphics[width = 14cm, height = 5cm]{pic/decoder.png}
+            \caption{Masked Multi-head Attention computation}
+    \end{figure}
+\end{frame}
+
+\section{BERT}
+
+\begin{frame}{Motivation}
+    \begin{itemize}[<+-| alert@+>]
+        \item Existing models like OpenAI GPT were unidirectional.
+        \item Understanding context in both directions was a challenge.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Goal}
+    \begin{itemize}
+        \item To build a model that fully leverages context from both directions for improved language understanding.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Model Architecture}
+    \begin{itemize}[<+-| alert@+>]
+        \item Architecture is made of layers of \textbf{ENCODER}'s of the transformer model. 
+        \item \textbf{BERT-base}: 
+            \begin{itemize}[<+-| alert@+>]
+                \item[i] 12 encoder layers
+                \item[ii] 12 attention heads
+                \item[iii] 3072 hidden size of feed-forward layer
+                \item[iv] 768 embedding size
+            \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Model Architecture}
+    \begin{itemize}[<+-| alert@+>]
+        \item \textbf{BERT-large: }
+        \item[i] 24 encoder layers
+        \item[ii] 16 attention heads
+        \item[iii] 4096 hidden size of feed-forward layer
+        \item[iv] 1024 embedding size
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{BERT Training}
+Two ways of training;
+    \begin{itemize} [<+-| alert@+>]
+        \item[1] Pre-training
+        \item[2] Fine-tuning
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}{Experiment \& Results}
+    \begin{figure}[h]
+            \centering
+            \includegraphics[width = 13cm, height = 5cm]{pic/experiment.png}
+            \caption{Experiment and results}
+    \end{figure}
+\end{frame}
+
+\begin{frame}{Limitations}
+    \begin{itemize} [<+-| alert@+>]
+        \item Computationally expensive.
+        \item Requires large datasets.
+        \item Limited understanding of rare or out-of-distribution words
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusions}
+    \begin{itemize} [<+-| alert@+>]
+        \item BERT revolutionized NLP with bidirectional transformers.
+        \item Future improvements focus on efficiency (e.g., DistilBERT) and domain-specific adaptations (e.g., BioBERT).
+    \end{itemize}
+\end{frame}
+
+% \section{References}
+
+% \begin{frame}[allowframebreaks]
+%     \bibliography{ref}
+%     \bibliographystyle{ieeetr}
+%     \nocite{*} % used here because no citation happens in slides
+%     % if there are too many try use：
+%     % \tiny\bibliographystyle{alpha}
+% \end{frame}
+
+
+\begin{frame}
+    \begin{center}
+        {\Huge\calligra Thank You}
+    \end{center}
+\end{frame}
+
+\end{document}

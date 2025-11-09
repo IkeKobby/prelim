@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="white"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold">
+    Agentic Systems: Two Architectural Patterns
+  </text>
+  
+  <!-- Left Diagram: Direct LM-to-Tool Interaction -->
+  <text x="200" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold">
+    Direct LM-to-Tool Interaction
+  </text>
+  
+  <!-- Primary LM (Purple) -->
+  <rect x="50" y="80" width="80" height="40" fill="#8B4C8B" stroke="black" stroke-width="2"/>
+  <text x="90" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white" font-weight="bold">LM</text>
+  
+  <!-- Tools (Gray) -->
+  <rect x="200" y="80" width="60" height="30" fill="#808080" stroke="black" stroke-width="1"/>
+  <text x="230" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">Tool #1</text>
+  
+  <rect x="200" y="120" width="60" height="30" fill="#808080" stroke="black" stroke-width="1"/>
+  <text x="230" y="140" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">Tool #2</text>
+  
+  <!-- Secondary LM (Blue) -->
+  <rect x="150" y="180" width="60" height="30" fill="#4169E1" stroke="black" stroke-width="1"/>
+  <text x="180" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" font-weight="bold">LM</text>
+  
+  <!-- Tool #3 and #4 -->
+  <rect x="280" y="180" width="60" height="30" fill="#808080" stroke="black" stroke-width="1"/>
+  <text x="310" y="200" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">Tool #3</text>
+  
+  <rect x="280" y="220" width="60" height="30" fill="#808080" stroke="black" stroke-width="1"/>
+  <text x="310" y="240" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">Tool #4</text>
+  
+  <!-- Optional Logger -->
+  <rect x="50" y="250" width="80" height="20" fill="none" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+  <text x="90" y="265" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">(optional) logger</text>
+  
+  <!-- Arrows - Call signals (dark gray) -->
+  <line x1="130" y1="100" x2="200" y2="95" stroke="#404040" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="130" y1="100" x2="200" y2="135" stroke="#404040" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="130" y1="120" x2="180" y2="180" stroke="#404040" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="210" y1="195" x2="280" y2="195" stroke="#404040" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="210" y1="195" x2="280" y2="235" stroke="#404040" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Arrows - Response signals (light gray) -->
+  <line x1="200" y1="95" x2="130" y2="100" stroke="#A0A0A0" stroke-width="1" marker-end="url(#arrowhead)"/>
+  <line x1="200" y1="135" x2="130" y2="100" stroke="#A0A0A0" stroke-width="1" marker-end="url(#arrowhead)"/>
+  <line x1="180" y1="180" x2="130" y2="120" stroke="#A0A0A0" stroke-width="1" marker-end="url(#arrowhead)"/>
+  <line x1="280" y1="195" x2="210" y2="195" stroke="#A0A0A0" stroke-width="1" marker-end="url(#arrowhead)"/>
+  <line x1="280" y1="235" x2="210" y2="195" stroke="#A0A0A0" stroke-width="1" marker-end="url(#arrowhead)"/>
+  
+  <!-- Control Flow Example -->
+  <text x="200" y="320" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold">
+    Example Control Flow:
+  </text>
+  <text x="200" y="340" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">
+    LM → T#1 → LM → T#2 → LM → LM → T#3 → LM → T#4 → LM → LM
+  </text>
+  
+  <!-- Right Diagram: Controller-Mediated Interaction -->
+  <text x="600" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold">
+    Controller-Mediated Interaction
+  </text>
+  
+  <!-- Optional Primary LM (Purple) -->
+  <rect x="450" y="80" width="80" height="30" fill="#8B4C8B" stroke="black" stroke-width="1"/>
+  <text x="490" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" font-weight="bold">(optional) LM</text>
+  
+  <!-- Controller (Black) -->
+  <rect x="550" y="80" width="100" height="60" fill="black" stroke="black" stroke-width="2"/>
+  <text x="600" y="115" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="white" font-weight="bold">Controller</text>
+  
+  <!-- Tools -->
+  <rect x="700" y="80" width="60" height="30" fill="#808080" stroke="black" stroke-width="1"/>
+  <text x="730" y="100" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">Tool #1</text>
+  
+  <rect x="700" y="200" width="60" height="30" fill="#808080" stroke="black" stroke-width="1"/>
+  <text x="730" y="220" text-anchor="middle" font-family="Arial, sans-serif" font-size="10">Tool #4</text>
+  
+  <!-- Secondary LM (Blue) -->
+  <rect x="600" y="280" width="60" height="30" fill="#4169E1" stroke="black" stroke-width="1"/>
+  <text x="630" y="300" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="white" font-weight="bold">LM</text>
+  
+  <!-- Optional Logger -->
+  <rect x="550" y="150" width="100" height="20" fill="none" stroke="black" stroke-width="1" stroke-dasharray="5,5"/>
+  <text x="600" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">(optional) logger</text>
+  
+  <!-- Arrows - Request/Response between LM and Controller -->
+  <line x1="530" y1="95" x2="550" y2="95" stroke="#404040" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="550" y1="110" x2="530" y2="110" stroke="#A0A0A0" stroke-width="1" marker-end="url(#arrowhead)"/>
+  
+  <!-- Arrows - Controller to Tools and LM -->
+  <line x1="650" y1="95" x2="700" y2="95" stroke="#404040" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="650" y1="140" x2="700" y2="215" stroke="#404040" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="600" y1="140" x2="630" y2="280" stroke="#404040" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Arrows - Responses back to Controller -->
+  <line x1="700" y1="95" x2="650" y2="95" stroke="#A0A0A0" stroke-width="1" marker-end="url(#arrowhead)"/>
+  <line x1="700" y1="215" x2="650" y2="140" stroke="#A0A0A0" stroke-width="1" marker-end="url(#arrowhead)"/>
+  <line x1="630" y1="280" x2="600" y2="140" stroke="#A0A0A0" stroke-width="1" marker-end="url(#arrowhead)"/>
+  
+  <!-- Control Flow Example -->
+  <text x="600" y="380" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" font-weight="bold">
+    Example Control Flow:
+  </text>
+  <text x="600" y="400" text-anchor="middle" font-family="Arial, sans-serif" font-size="9">
+    LM → C → T#1 → C → LM → C → T#4 → C → LM → C → LM
+  </text>
+  
+  <!-- Legend -->
+  <text x="50" y="450" font-family="Arial, sans-serif" font-size="12" font-weight="bold">Legend:</text>
+  <rect x="50" y="460" width="15" height="10" fill="#8B4C8B"/>
+  <text x="70" y="470" font-family="Arial, sans-serif" font-size="10">Primary LM</text>
+  
+  <rect x="150" y="460" width="15" height="10" fill="#4169E1"/>
+  <text x="170" y="470" font-family="Arial, sans-serif" font-size="10">Secondary LM</text>
+  
+  <rect x="250" y="460" width="15" height="10" fill="#808080"/>
+  <text x="270" y="470" font-family="Arial, sans-serif" font-size="10">Tools</text>
+  
+  <rect x="320" y="460" width="15" height="10" fill="black"/>
+  <text x="340" y="470" font-family="Arial, sans-serif" font-size="10">Controller</text>
+  
+  <line x1="420" y1="465" x2="435" y2="465" stroke="#404040" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <text x="440" y="470" font-family="Arial, sans-serif" font-size="10">Call signals</text>
+  
+  <line x1="520" y1="465" x2="535" y2="465" stroke="#A0A0A0" stroke-width="1" marker-end="url(#arrowhead)"/>
+  <text x="540" y="470" font-family="Arial, sans-serif" font-size="10">Response signals</text>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="currentColor"/>
+    </marker>
+  </defs>
+  
+</svg>
+
+
+
