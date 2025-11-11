@@ -1,0 +1,115 @@
+<svg width="1000" height="650" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="retrieveGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fef08a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fde047;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="devGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#86efac;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#4ade80;stop-opacity:0.9" />
+    </linearGradient>
+    <linearGradient id="deployGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#93c5fd;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:0.9" />
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#1e40af"/>
+    </marker>
+    <marker id="arrowDown" markerWidth="10" markerHeight="10" refX="5" refY="9" orient="auto">
+      <polygon points="0 0, 10 6, 5 9, 0 6" fill="#1e40af"/>
+    </marker>
+    <marker id="arrowUp" markerWidth="10" markerHeight="10" refX="5" refY="1" orient="auto">
+      <polygon points="5 0, 10 6, 0 6, 5 1" fill="#16a34a"/>
+    </marker>
+    <filter id="shadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+      <feOffset dx="2" dy="2"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.3"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="1000" height="650" fill="#ffffff"/>
+  
+  <!-- Title -->
+  <text x="500" y="25" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e3a8a" text-anchor="middle">Case-Based Reasoning (CBR) Cycle</text>
+  
+  <!-- New Task -->
+  <rect x="420" y="50" width="160" height="40" rx="8" fill="#e5e7eb" stroke="#6b7280" stroke-width="2"/>
+  <text x="500" y="75" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1f2937" text-anchor="middle">New Task</text>
+  
+  <!-- Retrieve (Central, Yellow) -->
+  <rect x="420" y="120" width="160" height="50" rx="8" fill="url(#retrieveGrad)" stroke="#ca8a04" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="500" y="145" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#78350f" text-anchor="middle">Retrieve</text>
+  <text x="500" y="160" font-family="Arial, sans-serif" font-size="10" fill="#92400e" text-anchor="middle">1.5B SLM</text>
+  
+  <!-- Arrow: New Task to Retrieve -->
+  <path d="M 500 90 L 500 120" stroke="#6b7280" stroke-width="2.5" fill="none" marker-end="url(#arrowDown)"/>
+  
+  <!-- Case Bank (Database Cylinder) - positioned below Retrieve -->
+  <ellipse cx="500" cy="220" rx="70" ry="18" fill="#9ca3af" stroke="#4b5563" stroke-width="2"/>
+  <rect x="430" y="220" width="140" height="70" fill="#d1d5db" stroke="#4b5563" stroke-width="2"/>
+  <ellipse cx="500" cy="290" rx="70" ry="18" fill="#6b7280" stroke="#4b5563" stroke-width="2"/>
+  <text x="500" y="260" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1f2937" text-anchor="middle">Case Bank</text>
+  
+  <!-- Arrow: Case Bank to Retrieve -->
+  <path d="M 500 220 Q 500 180 500 170" stroke="#4b5563" stroke-width="2.5" fill="none" marker-end="url(#arrowUp)"/>
+  
+  <!-- Development Stage Label -->
+  <text x="250" y="340" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1e3a8a" text-anchor="middle">(a) Development Stage</text>
+  
+  <!-- RankRevise -->
+  <rect x="150" y="360" width="200" height="50" rx="8" fill="url(#devGrad)" stroke="#16a34a" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="250" y="385" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#14532d" text-anchor="middle">RankRevise</text>
+  <text x="250" y="400" font-family="Arial, sans-serif" font-size="10" fill="#166534" text-anchor="middle">3.8B SLM</text>
+  
+  <!-- Arrow: Retrieve to RankRevise -->
+  <path d="M 420 145 Q 300 250 250 360" stroke="#1e40af" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  
+  <!-- Reuse -->
+  <rect x="150" y="440" width="200" height="50" rx="8" fill="url(#devGrad)" stroke="#16a34a" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="250" y="465" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#14532d" text-anchor="middle">Reuse</text>
+  <text x="250" y="480" font-family="Arial, sans-serif" font-size="10" fill="#166534" text-anchor="middle">Agents</text>
+  
+  <!-- Arrow: RankRevise to Reuse -->
+  <path d="M 250 410 L 250 440" stroke="#16a34a" stroke-width="2.5" fill="none" marker-end="url(#arrowDown)"/>
+  
+  <!-- Execute -->
+  <rect x="150" y="520" width="200" height="50" rx="8" fill="url(#devGrad)" stroke="#16a34a" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="250" y="545" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#14532d" text-anchor="middle">Execute</text>
+  <text x="250" y="560" font-family="Arial, sans-serif" font-size="10" fill="#166534" text-anchor="middle">Execution</text>
+  
+  <!-- Arrow: Reuse to Execute -->
+  <path d="M 250 490 L 250 520" stroke="#16a34a" stroke-width="2.5" fill="none" marker-end="url(#arrowDown)"/>
+  
+  <!-- Revise Loop (from Execute back to RankRevise) -->
+  <path d="M 150 545 Q 80 545 80 385 Q 80 360 150 385" stroke="#16a34a" stroke-width="2" fill="none" stroke-dasharray="5,3" marker-end="url(#arrowUp)"/>
+  <text x="60" y="465" font-family="Arial, sans-serif" font-size="9" fill="#166534" font-style="italic">Revise Loop</text>
+  
+  <!-- Deployment Stage Label -->
+  <text x="750" y="380" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1e3a8a" text-anchor="middle">(b) Deployment Stage</text>
+  
+  <!-- Adapt -->
+  <rect x="650" y="400" width="200" height="50" rx="8" fill="url(#deployGrad)" stroke="#2563eb" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="750" y="425" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1e3a8a" text-anchor="middle">Adapt</text>
+  <text x="750" y="440" font-family="Arial, sans-serif" font-size="10" fill="#1e40af" text-anchor="middle">3.8B SLM</text>
+  
+  <!-- Arrow: Retrieve to Adapt -->
+  <path d="M 580 145 Q 700 270 750 400" stroke="#1e40af" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  
+  <!-- Retain -->
+  <rect x="420" y="540" width="160" height="50" rx="8" fill="url(#devGrad)" stroke="#16a34a" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="500" y="565" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#14532d" text-anchor="middle">Retain</text>
+  <text x="500" y="580" font-family="Arial, sans-serif" font-size="10" fill="#166534" text-anchor="middle">Update</text>
+  
+  <!-- Arrow: Execute to Retain -->
+  <path d="M 350 545 Q 420 565 420 565" stroke="#16a34a" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  
+  <!-- Arrow: Adapt to Case Bank (direct connection) -->
+  <path d="M 750 425 Q 850 300 570 290" stroke="#2563eb" stroke-width="2.5" fill="none" marker-end="url(#arrowUp)"/>
+  
+  <!-- Arrow: Retain to Case Bank -->
+  <path d="M 500 590 Q 500 350 500 290" stroke="#16a34a" stroke-width="2.5" fill="none" marker-end="url(#arrowUp)"/>
+  
+</svg>
+

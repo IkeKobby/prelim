@@ -1,0 +1,135 @@
+<svg width="1100" height="600" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="plannerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e40af;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="agentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60a5fa;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#93c5fd;stop-opacity:0.9" />
+    </linearGradient>
+    <linearGradient id="execGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10b981;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#34d399;stop-opacity:0.9" />
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#1e40af"/>
+    </marker>
+    <marker id="arrowDown" markerWidth="10" markerHeight="10" refX="5" refY="9" orient="auto">
+      <polygon points="0 0, 10 6, 5 9, 0 6" fill="#1e40af"/>
+    </marker>
+    <filter id="shadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="2"/>
+      <feOffset dx="2" dy="2"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.3"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="1100" height="600" fill="#ffffff"/>
+  
+  <!-- Title -->
+  <text x="550" y="25" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e3a8a" text-anchor="middle">Multi-Agent AutoML Orchestration</text>
+  
+  <!-- Input: Dataset -->
+  <rect x="470" y="45" width="160" height="35" rx="5" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+  <text x="550" y="67" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1e3a8a" text-anchor="middle">Dataset</text>
+  
+  <!-- Planner Agent (Central Coordinator) -->
+  <rect x="400" y="100" width="300" height="60" rx="8" fill="url(#plannerGrad)" filter="url(#shadow)"/>
+  <text x="550" y="125" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">Planner Agent</text>
+  <text x="550" y="145" font-family="Arial, sans-serif" font-size="11" fill="#e0e7ff" text-anchor="middle">3.8B SLM • Task Routing • Dependency Management</text>
+  
+  <!-- Arrow: Input to Planner -->
+  <path d="M 550 80 L 550 100" stroke="#6366f1" stroke-width="3" fill="none" marker-end="url(#arrowDown)"/>
+  
+  <!-- Specialized Agents Row 1 -->
+  <!-- Data Agent -->
+  <rect x="60" y="200" width="180" height="70" rx="6" fill="url(#agentGrad)" filter="url(#shadow)"/>
+  <text x="150" y="225" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1e3a8a" text-anchor="middle">Data Agent</text>
+  <text x="150" y="245" font-family="Arial, sans-serif" font-size="10" fill="#1e3a8a" text-anchor="middle">1.5B SLM</text>
+  <text x="150" y="260" font-family="Arial, sans-serif" font-size="9" fill="#475569" text-anchor="middle">Quality • Schema • Cleaning</text>
+  
+  <!-- Feature Agent -->
+  <rect x="280" y="200" width="180" height="70" rx="6" fill="url(#agentGrad)" filter="url(#shadow)"/>
+  <text x="370" y="225" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1e3a8a" text-anchor="middle">Feature Agent</text>
+  <text x="370" y="245" font-family="Arial, sans-serif" font-size="10" fill="#1e3a8a" text-anchor="middle">2B SLM</text>
+  <text x="370" y="260" font-family="Arial, sans-serif" font-size="9" fill="#475569" text-anchor="middle">Engineering • Transformation</text>
+  
+  <!-- Model Agent -->
+  <rect x="640" y="200" width="180" height="70" rx="6" fill="url(#agentGrad)" filter="url(#shadow)"/>
+  <text x="730" y="225" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1e3a8a" text-anchor="middle">Model Agent</text>
+  <text x="730" y="245" font-family="Arial, sans-serif" font-size="10" fill="#1e3a8a" text-anchor="middle">3.8B SLM</text>
+  <text x="730" y="260" font-family="Arial, sans-serif" font-size="9" fill="#475569" text-anchor="middle">Architecture • Selection</text>
+  
+  <!-- Hyperparameter Agent -->
+  <rect x="860" y="200" width="180" height="70" rx="6" fill="url(#agentGrad)" filter="url(#shadow)"/>
+  <text x="950" y="225" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1e3a8a" text-anchor="middle">Hyperparameter Agent</text>
+  <text x="950" y="245" font-family="Arial, sans-serif" font-size="10" fill="#1e3a8a" text-anchor="middle">2B SLM</text>
+  <text x="950" y="260" font-family="Arial, sans-serif" font-size="9" fill="#475569" text-anchor="middle">Optimization • Tuning</text>
+  
+  <!-- Specialized Agents Row 2 -->
+  <!-- Evaluator Agent (centered) -->
+  <rect x="460" y="300" width="180" height="70" rx="6" fill="url(#agentGrad)" filter="url(#shadow)"/>
+  <text x="550" y="325" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1e3a8a" text-anchor="middle">Evaluator Agent</text>
+  <text x="550" y="345" font-family="Arial, sans-serif" font-size="10" fill="#1e3a8a" text-anchor="middle">1.5B SLM</text>
+  <text x="550" y="360" font-family="Arial, sans-serif" font-size="9" fill="#475569" text-anchor="middle">Metrics • Validation • Reports</text>
+  
+  <!-- Arrows: Planner to Agents -->
+  <path d="M 450 160 Q 150 180 150 200" stroke="#1e40af" stroke-width="2.5" fill="none" marker-end="url(#arrowDown)"/>
+  <path d="M 480 160 Q 370 180 370 200" stroke="#1e40af" stroke-width="2.5" fill="none" marker-end="url(#arrowDown)"/>
+  <path d="M 620 160 Q 730 180 730 200" stroke="#1e40af" stroke-width="2.5" fill="none" marker-end="url(#arrowDown)"/>
+  <path d="M 650 160 Q 950 180 950 200" stroke="#1e40af" stroke-width="2.5" fill="none" marker-end="url(#arrowDown)"/>
+  <path d="M 550 160 L 550 300" stroke="#1e40af" stroke-width="2.5" fill="none" marker-end="url(#arrowDown)"/>
+  
+  <!-- Dependency Flow Arrows (showing task dependencies) -->
+  <!-- Data -> Feature -->
+  <path d="M 240 235 Q 310 235 280 235" stroke="#10b981" stroke-width="2" fill="none" stroke-dasharray="3,2" marker-end="url(#arrow)"/>
+  
+  <!-- Feature -> Model -->
+  <path d="M 460 235 Q 600 235 640 235" stroke="#10b981" stroke-width="2" fill="none" stroke-dasharray="3,2" marker-end="url(#arrow)"/>
+  
+  <!-- Model -> Hyperparameter -->
+  <path d="M 820 235 L 860 235" stroke="#10b981" stroke-width="2" fill="none" stroke-dasharray="3,2" marker-end="url(#arrow)"/>
+  
+  <!-- All -> Evaluator -->
+  <path d="M 150 270 Q 150 320 460 320" stroke="#10b981" stroke-width="2" fill="none" stroke-dasharray="3,2" marker-end="url(#arrowDown)"/>
+  <path d="M 370 270 Q 370 310 520 310" stroke="#10b981" stroke-width="2" fill="none" stroke-dasharray="3,2" marker-end="url(#arrowDown)"/>
+  <path d="M 730 270 Q 730 310 580 310" stroke="#10b981" stroke-width="2" fill="none" stroke-dasharray="3,2" marker-end="url(#arrowDown)"/>
+  <path d="M 950 270 Q 950 310 640 310" stroke="#10b981" stroke-width="2" fill="none" stroke-dasharray="3,2" marker-end="url(#arrowDown)"/>
+  
+  <!-- Sandboxed Execution -->
+  <rect x="300" y="400" width="500" height="50" rx="6" fill="url(#execGrad)" filter="url(#shadow)"/>
+  <text x="550" y="425" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#065f46" text-anchor="middle">Sandboxed Execution</text>
+  <text x="550" y="440" font-family="Arial, sans-serif" font-size="10" fill="#047857" text-anchor="middle">Structured Communication • Programmatic Validation • Safety Mechanisms</text>
+  
+  <!-- Arrows: Agents to Execution -->
+  <path d="M 150 270 Q 150 350 400 400" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#arrowDown)"/>
+  <path d="M 370 270 Q 370 350 450 400" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#arrowDown)"/>
+  <path d="M 730 270 Q 730 350 650 400" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#arrowDown)"/>
+  <path d="M 950 270 Q 950 350 700 400" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#arrowDown)"/>
+  <path d="M 550 370 L 550 400" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#arrowDown)"/>
+  
+  <!-- Output: Pipeline -->
+  <rect x="470" y="480" width="160" height="40" rx="5" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="550" y="502" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1e3a8a" text-anchor="middle">ML Pipeline</text>
+  <text x="550" y="515" font-family="Arial, sans-serif" font-size="10" fill="#1e40af" text-anchor="middle">Complete Workflow</text>
+  
+  <!-- Arrow: Execution to Output -->
+  <path d="M 550 450 L 550 480" stroke="#2563eb" stroke-width="3" fill="none" marker-end="url(#arrowDown)"/>
+  
+  <!-- Feedback to Planner (for coordination) -->
+  <path d="M 800 425 Q 900 250 700 160" stroke="#3b82f6" stroke-width="2" fill="none" stroke-dasharray="5,3" marker-end="url(#arrowUp)"/>
+  <text x="850" y="290" font-family="Arial, sans-serif" font-size="9" fill="#3b82f6" font-style="italic">State Updates</text>
+  
+  <!-- Key Features Box -->
+  <rect x="60" y="400" width="200" height="120" rx="5" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="160" y="420" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#92400e" text-anchor="middle">Key Features</text>
+  <line x1="70" y1="430" x2="250" y2="430" stroke="#f59e0b" stroke-width="1"/>
+  <text x="70" y="450" font-family="Arial, sans-serif" font-size="9" fill="#78350f">✓ Parallel Execution</text>
+  <text x="70" y="470" font-family="Arial, sans-serif" font-size="9" fill="#78350f">✓ Task Dependency Graph</text>
+  <text x="70" y="490" font-family="Arial, sans-serif" font-size="9" fill="#78350f">✓ 70-90% Context ↓</text>
+  <text x="70" y="510" font-family="Arial, sans-serif" font-size="9" fill="#78350f">✓ Sub-5min Runtime</text>
+  
+</svg>
+

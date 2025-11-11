@@ -1,0 +1,207 @@
+<svg width="1400" height="850" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a8a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563eb;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="p1Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#60a5fa;stop-opacity:0.9" />
+    </linearGradient>
+    <linearGradient id="p2Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e40af;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#3b82f6;stop-opacity:0.9" />
+    </linearGradient>
+    <linearGradient id="p3Grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0284c7;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#0ea5e9;stop-opacity:0.9" />
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#2563eb"/>
+    </marker>
+    <marker id="arrowThick" markerWidth="12" markerHeight="12" refX="11" refY="4" orient="auto">
+      <polygon points="0 0, 12 4, 0 8" fill="#1e40af"/>
+    </marker>
+    <filter id="shadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="2" dy="2"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.3"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  
+  <rect width="1400" height="850" fill="#ffffff"/>
+  
+  <!-- Header -->
+  <rect x="0" y="0" width="1400" height="60" fill="url(#headerGrad)"/>
+  <text x="700" y="32" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#ffffff" text-anchor="middle">SLM-First Agentic Systems Research Plan</text>
+  <text x="700" y="52" font-family="Arial, sans-serif" font-size="12" fill="#e0e7ff" text-anchor="middle">Privacy • Cost-Efficient • Controller-Mediated</text>
+  
+  <!-- Foundations -->
+  <circle cx="250" cy="120" r="28" fill="#60a5fa" filter="url(#shadow)"/>
+  <text x="250" y="128" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">C</text>
+  <text x="250" y="155" font-family="Arial, sans-serif" font-size="10" fill="#1e3a8a" text-anchor="middle">CAAFE</text>
+  
+  <circle cx="550" cy="120" r="28" fill="#3b82f6" filter="url(#shadow)"/>
+  <text x="550" y="128" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">S</text>
+  <text x="550" y="155" font-family="Arial, sans-serif" font-size="10" fill="#1e3a8a" text-anchor="middle">SLM-AI</text>
+  
+  <circle cx="850" cy="120" r="28" fill="#2563eb" filter="url(#shadow)"/>
+  <text x="850" y="128" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">M</text>
+  <text x="850" y="155" font-family="Arial, sans-serif" font-size="10" fill="#1e3a8a" text-anchor="middle">MiniCPM</text>
+  
+  <!-- Objectives -->
+  <rect x="1100" y="100" width="260" height="70" rx="6" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <text x="1230" y="125" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#1e40af" text-anchor="middle">Objectives</text>
+  <text x="1115" y="145" font-family="Arial, sans-serif" font-size="9" fill="#1e3a8a">10-30× cost ↓</text>
+  <text x="1115" y="160" font-family="Arial, sans-serif" font-size="9" fill="#1e3a8a">Privacy-preserving</text>
+  
+  <!-- Arrows to projects -->
+  <path d="M 250 148 L 200 195" stroke="#60a5fa" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 550 148 L 560 195" stroke="#3b82f6" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  <path d="M 850 148 L 920 195" stroke="#2563eb" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+  
+  <!-- Project 1 -->
+  <rect x="120" y="210" width="320" height="280" rx="10" fill="url(#p1Grad)" filter="url(#shadow)"/>
+  <rect x="130" y="220" width="300" height="30" rx="5" fill="#1e40af"/>
+  <text x="280" y="239" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">Project 1: Feature Engineering</text>
+  
+  <rect x="150" y="270" width="260" height="20" rx="3" fill="#ffffff" opacity="0.95"/>
+  <text x="280" y="283" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#1e40af" text-anchor="middle">Controller</text>
+  
+  <rect x="150" y="310" width="120" height="35" rx="3" fill="#bfdbfe"/>
+  <text x="210" y="327" font-family="Arial, sans-serif" font-size="8" fill="#1e3a8a" text-anchor="middle">Temporal</text>
+  <text x="210" y="339" font-family="Arial, sans-serif" font-size="7" fill="#475569" text-anchor="middle">2B</text>
+  
+  <rect x="290" y="310" width="120" height="35" rx="3" fill="#bfdbfe"/>
+  <text x="350" y="327" font-family="Arial, sans-serif" font-size="8" fill="#1e3a8a" text-anchor="middle">Categorical</text>
+  <text x="350" y="339" font-family="Arial, sans-serif" font-size="7" fill="#475569" text-anchor="middle">2B</text>
+  
+  <rect x="150" y="360" width="120" height="35" rx="3" fill="#bfdbfe"/>
+  <text x="210" y="377" font-family="Arial, sans-serif" font-size="8" fill="#1e3a8a" text-anchor="middle">Numerical</text>
+  <text x="210" y="389" font-family="Arial, sans-serif" font-size="7" fill="#475569" text-anchor="middle">2.4B</text>
+  
+  <rect x="290" y="360" width="120" height="35" rx="3" fill="#93c5fd"/>
+  <text x="350" y="377" font-family="Arial, sans-serif" font-size="8" fill="#1e3a8a" text-anchor="middle">Escalate</text>
+  <text x="350" y="389" font-family="Arial, sans-serif" font-size="7" fill="#475569" text-anchor="middle">7B/LLM</text>
+  
+  <rect x="150" y="415" width="260" height="55" rx="3" fill="#1e40af" opacity="0.7"/>
+  <text x="280" y="433" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">10-30× Cost ↓</text>
+  <text x="280" y="448" font-family="Arial, sans-serif" font-size="8" fill="#e0e7ff" text-anchor="middle">Sub-300ms</text>
+  <text x="280" y="463" font-family="Arial, sans-serif" font-size="8" fill="#e0e7ff" text-anchor="middle">On-Prem</text>
+  
+  <!-- Project 2 -->
+  <rect x="480" y="210" width="320" height="280" rx="10" fill="url(#p2Grad)" filter="url(#shadow)"/>
+  <rect x="490" y="220" width="300" height="30" rx="5" fill="#1e3a8a"/>
+  <text x="640" y="239" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">Project 2: Case-Based Reasoning</text>
+  
+  <rect x="510" y="270" width="280" height="70" rx="3" fill="#1e40af" opacity="0.8"/>
+  <text x="650" y="288" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">Development</text>
+  <text x="650" y="305" font-family="Arial, sans-serif" font-size="8" fill="#e0e7ff" text-anchor="middle">Case Bank • Retriever (1.5B)</text>
+  <text x="650" y="320" font-family="Arial, sans-serif" font-size="8" fill="#e0e7ff" text-anchor="middle">Revisor (3.8B) • Agents</text>
+  <text x="650" y="335" font-family="Arial, sans-serif" font-size="8" fill="#e0e7ff" text-anchor="middle">Iterative Refinement</text>
+  
+  <rect x="510" y="355" width="280" height="45" rx="3" fill="#1e40af" opacity="0.8"/>
+  <text x="650" y="373" font-family="Arial, sans-serif" font-size="10" font-weight="bold" fill="#ffffff" text-anchor="middle">Deployment</text>
+  <text x="650" y="388" font-family="Arial, sans-serif" font-size="8" fill="#e0e7ff" text-anchor="middle">One-Pass (3.8B) • Controller</text>
+  <text x="650" y="403" font-family="Arial, sans-serif" font-size="8" fill="#e0e7ff" text-anchor="middle">Auto Validation</text>
+  
+  <rect x="510" y="415" width="280" height="55" rx="3" fill="#1e3a8a" opacity="0.7"/>
+  <text x="650" y="433" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">10-100× Cost ↓</text>
+  <text x="650" y="448" font-family="Arial, sans-serif" font-size="8" fill="#e0e7ff" text-anchor="middle">85%+ One-Pass</text>
+  <text x="650" y="463" font-family="Arial, sans-serif" font-size="8" fill="#e0e7ff" text-anchor="middle">On-Prem</text>
+  
+  <!-- Project 3 -->
+  <rect x="840" y="210" width="320" height="280" rx="10" fill="url(#p3Grad)" filter="url(#shadow)"/>
+  <rect x="850" y="220" width="300" height="30" rx="5" fill="#0c4a6e"/>
+  <text x="1000" y="239" font-family="Arial, sans-serif" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">Project 3: Multi-Agent AutoML</text>
+  
+  <rect x="870" y="270" width="260" height="20" rx="3" fill="#0ea5e9" opacity="0.9"/>
+  <text x="1000" y="283" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">Planner Agent (3.8B)</text>
+  
+  <rect x="870" y="305" width="70" height="30" rx="2" fill="#ffffff"/>
+  <text x="905" y="320" font-family="Arial, sans-serif" font-size="7" fill="#0c4a6e" text-anchor="middle">Data</text>
+  <text x="905" y="330" font-family="Arial, sans-serif" font-size="6" fill="#475569" text-anchor="middle">1.5B</text>
+  
+  <rect x="950" y="305" width="70" height="30" rx="2" fill="#ffffff"/>
+  <text x="985" y="320" font-family="Arial, sans-serif" font-size="7" fill="#0c4a6e" text-anchor="middle">Feature</text>
+  <text x="985" y="330" font-family="Arial, sans-serif" font-size="6" fill="#475569" text-anchor="middle">2B</text>
+  
+  <rect x="1030" y="305" width="70" height="30" rx="2" fill="#ffffff"/>
+  <text x="1065" y="320" font-family="Arial, sans-serif" font-size="7" fill="#0c4a6e" text-anchor="middle">Model</text>
+  <text x="1065" y="330" font-family="Arial, sans-serif" font-size="6" fill="#475569" text-anchor="middle">3.8B</text>
+  
+  <rect x="870" y="345" width="70" height="30" rx="2" fill="#ffffff"/>
+  <text x="905" y="360" font-family="Arial, sans-serif" font-size="7" fill="#0c4a6e" text-anchor="middle">Hyper</text>
+  <text x="905" y="370" font-family="Arial, sans-serif" font-size="6" fill="#475569" text-anchor="middle">2B</text>
+  
+  <rect x="950" y="345" width="70" height="30" rx="2" fill="#ffffff"/>
+  <text x="985" y="360" font-family="Arial, sans-serif" font-size="7" fill="#0c4a6e" text-anchor="middle">Eval</text>
+  <text x="985" y="370" font-family="Arial, sans-serif" font-size="6" fill="#475569" text-anchor="middle">1.5B</text>
+  
+  <rect x="1030" y="345" width="70" height="30" rx="2" fill="#0ea5e9" opacity="0.7"/>
+  
+  <rect x="870" y="395" width="260" height="55" rx="3" fill="#0c4a6e" opacity="0.7"/>
+  <text x="1000" y="413" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#ffffff" text-anchor="middle">70-90% Context ↓</text>
+  <text x="1000" y="428" font-family="Arial, sans-serif" font-size="8" fill="#e0f2fe" text-anchor="middle">Sub-5 min</text>
+  <text x="1000" y="443" font-family="Arial, sans-serif" font-size="8" fill="#e0f2fe" text-anchor="middle">Parallel</text>
+  
+  <!-- Connection arrows -->
+  <path d="M 440 350 L 480 350" stroke="#2563eb" stroke-width="5" fill="none" marker-end="url(#arrowThick)"/>
+  <path d="M 800 350 L 840 350" stroke="#2563eb" stroke-width="5" fill="none" marker-end="url(#arrowThick)"/>
+  
+  <!-- Cross-Cutting -->
+  <rect x="100" y="520" width="1200" height="280" rx="8" fill="#f0f9ff" stroke="#0ea5e9" stroke-width="2"/>
+  <text x="700" y="545" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#0c4a6e" text-anchor="middle">Cross-Cutting Methods &amp; Success Criteria</text>
+  
+  <!-- Four columns -->
+  <rect x="130" y="565" width="270" height="210" rx="5" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="265" y="585" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0c4a6e" text-anchor="middle">Training</text>
+  <line x1="150" x2="380" y1="595" y2="595" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="155" y="615" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Wind tunnel</text>
+  <text x="155" y="635" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">WSD scheduling</text>
+  <text x="155" y="655" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Hyperparameter transfer</text>
+  <text x="155" y="675" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Continuous training</text>
+  <text x="155" y="695" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Checkpoint reuse</text>
+  <text x="155" y="715" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Domain adaptation</text>
+  <text x="155" y="735" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Rapid experimentation</text>
+  
+  <rect x="430" y="565" width="270" height="210" rx="5" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="565" y="585" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0c4a6e" text-anchor="middle">Safety</text>
+  <line x1="450" x2="680" y1="595" y2="595" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="455" y="615" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Programmatic verification</text>
+  <text x="455" y="635" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Schema validation</text>
+  <text x="455" y="655" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">KG-backed checks</text>
+  <text x="455" y="675" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Privacy-preserving logs</text>
+  <text x="455" y="695" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Cost/latency dashboards</text>
+  <text x="455" y="715" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Sandboxed execution</text>
+  <text x="455" y="735" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Error recovery</text>
+  
+  <rect x="730" y="565" width="270" height="210" rx="5" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="865" y="585" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0c4a6e" text-anchor="middle">Success Criteria</text>
+  <line x1="750" x2="980" y1="595" y2="595" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="755" y="615" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Accuracy parity</text>
+  <text x="755" y="635" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">≥10× cost reduction</text>
+  <text x="755" y="655" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Sub-300ms latency</text>
+  <text x="755" y="675" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Reproducibility</text>
+  <text x="755" y="695" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Explainability</text>
+  <text x="755" y="715" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Auditable provenance</text>
+  <text x="755" y="735" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">On-prem deployment</text>
+  
+  <rect x="1030" y="565" width="270" height="210" rx="5" fill="#e0f2fe" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="1165" y="585" font-family="Arial, sans-serif" font-size="12" font-weight="bold" fill="#0c4a6e" text-anchor="middle">Milestones</text>
+  <line x1="1050" x2="1280" y1="595" y2="595" stroke="#0ea5e9" stroke-width="1"/>
+  <text x="1055" y="615" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Project prototypes</text>
+  <text x="1055" y="635" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Documented APIs</text>
+  <text x="1055" y="655" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Evaluation reports</text>
+  <text x="1055" y="675" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">SLM vs LLM comparison</text>
+  <text x="1055" y="695" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Open-source artifacts</text>
+  <text x="1055" y="715" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Performance benchmarks</text>
+  <text x="1055" y="735" font-family="Arial, sans-serif" font-size="9" fill="#0c4a6e">Case study publications</text>
+  
+  <!-- Flow lines -->
+  <path d="M 280 490 L 280 520" stroke="#3b82f6" stroke-width="2" fill="none" stroke-dasharray="3,3"/>
+  <path d="M 640 490 L 640 520" stroke="#3b82f6" stroke-width="2" fill="none" stroke-dasharray="3,3"/>
+  <path d="M 1000 490 L 1000 520" stroke="#0ea5e9" stroke-width="2" fill="none" stroke-dasharray="3,3"/>
+  
+</svg>

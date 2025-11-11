@@ -12,6 +12,8 @@
 \usepackage{latexsym,amsmath,xcolor,multicol,booktabs,calligra}
 \usepackage{graphicx,pstricks,listings,stackengine}
 \usepackage{lipsum}
+\usepackage{tikz}
+\usetikzlibrary{tikzmark,arrows.meta,positioning,calc}
 
 \author{Isaac Kobby Anni}
 \title{Preliminary Exam Presentation}
@@ -147,6 +149,18 @@ subsubsectionstyle=show/shaded/hide]
 \end{frame}
 
 \begin{frame}{CAAFE: Problem Setup}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{img/context_info.png}
+        \caption{Contextual information simplifies feature engineering}
+    \end{figure}
+    
+    % \begin{alertblock}{Key Insight}
+    % Bridge LLM semantic capabilities with traditional ML reliability through code generation
+    % \end{alertblock}
+\end{frame}
+
+\begin{frame}{CAAFE: Problem Setup}
     \begin{columns}
         \column{0.5\textwidth}
         \textbf{Current Limitations:}
@@ -166,16 +180,28 @@ subsubsectionstyle=show/shaded/hide]
         \end{itemize}
     \end{columns}
     
-    \vspace{0.3cm}
-    \begin{figure}
-        \centering
-        \fbox{\parbox{0.8\textwidth}{\centering [Context Benefit Example\\Image Placeholder\\Shows how contextual information simplifies feature engineering tasks]}}
-        \caption{Contextual information simplifies feature engineering}
-    \end{figure}
+    % \vspace{0.3cm}
+    % \begin{figure}
+    %     \centering
+    %     \fbox{\parbox{0.8\textwidth}{\centering [Context Benefit Example\\Image Placeholder\\Shows how contextual information simplifies feature engineering tasks]}}
+    %     \caption{Contextual information simplifies feature engineering}
+    % \end{figure}
     
     \begin{alertblock}{Key Insight}
     Bridge LLM semantic capabilities with traditional ML reliability through code generation
     \end{alertblock}
+\end{frame}
+
+\begin{frame}{CAAFE: Methodology}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{img/trad_autoML.png}
+        \caption{CAAFE LLM semantic capabilities with traditional ML}
+    \end{figure}
+    
+    % \begin{alertblock}{Key Insight}
+    % Bridge LLM semantic capabilities with traditional ML reliability through code generation
+    % \end{alertblock}
 \end{frame}
 
 \begin{frame}{CAAFE: Methodology}
@@ -190,6 +216,13 @@ subsubsectionstyle=show/shaded/hide]
             \item \textbf{Acceptance:} Retain only if performance improves
         \end{enumerate}
         
+        
+        \column{0.5\textwidth}
+        % \begin{figure}
+        %     \centering
+        %     \fbox{\parbox{0.9\textwidth}{\centering [CAAFE Workflow Diagram\\Image Placeholder\\Shows iterative feature engineering process with validation loop]}}
+        %     \caption{CAAFE iterative workflow}
+        % \end{figure}
         \vspace{0.3cm}
         \textbf{Safety Mechanisms:}
         \begin{itemize}
@@ -197,14 +230,15 @@ subsubsectionstyle=show/shaded/hide]
             \item Error recovery with feedback loops
             \item Resource management
         \end{itemize}
-        
-        \column{0.5\textwidth}
-        \begin{figure}
-            \centering
-            \fbox{\parbox{0.9\textwidth}{\centering [CAAFE Workflow Diagram\\Image Placeholder\\Shows iterative feature engineering process with validation loop]}}
-            \caption{CAAFE iterative workflow}
-        \end{figure}
     \end{columns}
+\end{frame}
+
+\begin{frame}{CAAFE: Methodology}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{img/caafe-work-iter.png}
+        \caption{CAAFE iterative workflow}
+    \end{figure}
 \end{frame}
 
 \begin{frame}{CAAFE: Results}
@@ -306,26 +340,30 @@ subsubsectionstyle=show/shaded/hide]
         \column{0.5\textwidth}
         \textbf{Examples:}
         \begin{itemize}
-            \item Phi-2 (2.7B): Matches 30B, 15× faster
-            \item Phi-3 (7B): Comparable to 70B
-            \item Nemotron-H (2-9B): 30B performance, 10× fewer FLOPs
+            \item Phi-2 (2.7B): Commonsense reasoning and code generation on par with 30B models, 15× faster
+            \item Phi-3 (7B): Language understanding and commonsense reasoning on par with 70B models
+            \item Nemotron-H (2-9B): Instruction following and code generation comparable to 30B LLMs, order-of-magnitude fewer FLOPs
         \end{itemize}
         
         \column{0.5\textwidth}
-        \begin{figure}
-            \centering
-            \fbox{\parbox{0.9\textwidth}{\centering [SLM vs LLM Comparison\\Image Placeholder\\Shows cost, latency, and capability trade-offs]}}
-            \caption{SLM advantages visualization}
-        \end{figure}
+        % \begin{figure}
+        %     \centering
+        %     \fbox{\parbox{0.9\textwidth}{\centering [SLM vs LLM Comparison\\Image Placeholder\\Shows cost, latency, and capability trade-offs]}}
+        %     \caption{SLM advantages visualization}
+        % \end{figure}
     \end{columns}
 \end{frame}
 
 \begin{frame}{Agentic Architectures}
     \begin{figure}
         \centering
-        \fbox{\parbox{0.9\textwidth}{\centering [Agentic Architecture Diagrams\\Image Placeholder\\Left: Direct LM-to-Tool Interaction\\Right: Controller-Mediated Interaction]}}
+        \includegraphics[width=\textwidth]{img/tool.png}
         \caption{Two architectural patterns for agentic AI systems}
     \end{figure}
+
+\end{frame}
+
+\begin{frame}{Agentic Architectures}
     
     \begin{columns}
         \column{0.5\textwidth}
@@ -360,9 +398,9 @@ subsubsectionstyle=show/shaded/hide]
         \midrule
         DeepSeek-R1-Distill & 1.5-8B & Outperforms Claude-3.5-Sonnet, GPT-4o (commonsense) \\
         xLAM-2-8B & 8B & SOTA on tool calling \\
-        Phi-2 & 2.7B & Matches 30B models, 15× faster \\
-        Phi-3 & 7B & Comparable to 70B models \\
-        Nemotron-H & 2-9B & Dense 30B performance, 10× fewer FLOPs \\
+        Phi-2 & 2.7B & Commonsense reasoning, code generation on par with 30B, 15× faster \\
+        Phi-3 & 7B & Language understanding, commonsense reasoning on par with 70B \\
+        Nemotron-H & 2-9B & Instruction following, code generation comparable to 30B, order-of-magnitude fewer FLOPs \\
         \bottomrule
         \end{tabular}
         \caption{SLM performance on agentic-relevant tasks}
@@ -561,11 +599,15 @@ subsubsectionstyle=show/shaded/hide]
     
     \vspace{0.5cm}
     \begin{block}{Connection to My Research}
-    Provides systematic methodology for optimizing SLM training and deployment strategies, directly applicable to domain-specific SLMs for healthcare and campus analytics
+    Provides systematic methodology for optimizing SLM training and deployment strategies, directly applicable to domain-specific SLM development and deployment
     \end{block}
 \end{frame}
 
 \section{Synthesis \& Research Plan}
+
+\begin{frame}{Overall Research Objectives}
+    \includegraphics[width=\textwidth]{img/research_plan_overview.png}
+\end{frame}
 
 \begin{frame}{Overall Research Objectives}
     \begin{block}{Primary Goals}
@@ -573,7 +615,7 @@ subsubsectionstyle=show/shaded/hide]
         \item Develop SLM-first pipelines matching LLM baselines on scoped tasks
         \item Achieve substantial cost/latency reductions (target: 10× cost reduction, sub-300ms latency)
         \item Establish verifiable, code-centric agent loops with programmatic validation
-        \item Demonstrate institution-grade deployment with strict data governance
+        \item Demonstrate scalable deployment patterns with privacy-preserving capabilities
     \end{itemize}
     \end{block}
     
@@ -601,7 +643,7 @@ subsubsectionstyle=show/shaded/hide]
         \end{itemize}
         
         \vspace{0.3cm}
-        \textbf{Evaluation:} CAAFE evaluation datasets (OpenML: airlines, balance-scale, breast-w, cmc, credit-g, diabetes, eucalyptus, jungle\_chess, pc1, tic-tac-toe; Kaggle: health-insurance, pharyngitis, kidney-stone, spaceship-titanic) plus synthetic institutional surrogates; compare against DFS/AutoFeat and LLM-based CAAFE
+        \textbf{Evaluation:} CAAFE evaluation datasets (OpenML: airlines, balance-scale, breast-w, cmc, credit-g, diabetes, eucalyptus, jungle\_chess, pc1, tic-tac-toe; Kaggle: health-insurance, pharyngitis, kidney-stone, spaceship-titanic) plus additional synthetic datasets; compare against DFS/AutoFeat and LLM-based CAAFE
         
         \column{0.5\textwidth}
         \begin{figure}
@@ -734,9 +776,9 @@ subsubsectionstyle=show/shaded/hide]
     
     \begin{block}{Application Impact}
     \begin{itemize}
-        \item Healthcare analytics (privacy-sensitive)
-        \item Educational systems (resource-constrained)
-        \item Campus analytics (on-premise deployment)
+        \item Privacy-sensitive data processing (on-premise deployment)
+        \item Resource-constrained environments (edge computing)
+        \item Cost-sensitive production deployments
     \end{itemize}
     \end{block}
 \end{frame}
@@ -791,4 +833,3 @@ subsubsectionstyle=show/shaded/hide]
 \end{frame}
 
 \end{document}
-
