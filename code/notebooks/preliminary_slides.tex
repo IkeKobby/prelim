@@ -275,6 +275,7 @@ subsubsectionstyle=show/shaded/hide]
         \item \textbf{Iterative validation} creates natural safety mechanisms
         \item \textbf{Modular architecture} integrates with existing AutoML
         \item \textbf{SLM potential} for specialized feature engineering tasks
+
     \end{enumerate}
     
     \vspace{0.5cm}
@@ -340,9 +341,9 @@ subsubsectionstyle=show/shaded/hide]
         \column{0.5\textwidth}
         \textbf{Examples:}
         \begin{itemize}
-            \item Phi-2 (2.7B): Commonsense reasoning and code generation on par with 30B models, 15× faster
-            \item Phi-3 (7B): Language understanding and commonsense reasoning on par with 70B models
-            \item Nemotron-H (2-9B): Instruction following and code generation comparable to 30B LLMs, order-of-magnitude fewer FLOPs
+            \item Phi-2 (2.7B): Matches 30B, 15× faster
+            \item Phi-3 (7B): Comparable to 70B
+            \item Nemotron-H (2-9B): 30B performance, 10× fewer FLOPs
         \end{itemize}
         
         \column{0.5\textwidth}
@@ -398,9 +399,9 @@ subsubsectionstyle=show/shaded/hide]
         \midrule
         DeepSeek-R1-Distill & 1.5-8B & Outperforms Claude-3.5-Sonnet, GPT-4o (commonsense) \\
         xLAM-2-8B & 8B & SOTA on tool calling \\
-        Phi-2 & 2.7B & Commonsense reasoning, code generation on par with 30B, 15× faster \\
-        Phi-3 & 7B & Language understanding, commonsense reasoning on par with 70B \\
-        Nemotron-H & 2-9B & Instruction following, code generation comparable to 30B, order-of-magnitude fewer FLOPs \\
+        Phi-2 & 2.7B & Matches 30B models, 15× faster \\
+        Phi-3 & 7B & Comparable to 70B models \\
+        Nemotron-H & 2-9B & Dense 30B performance, 10× fewer FLOPs \\
         \bottomrule
         \end{tabular}
         \caption{SLM performance on agentic-relevant tasks}
@@ -493,21 +494,25 @@ subsubsectionstyle=show/shaded/hide]
             \end{itemize}
         \end{enumerate}
         
-        \begin{equation*}
+    \column{0.5\textwidth}
+    \begin{equation*}
         \text{WSD}(T; s) = \begin{cases}
         \frac{s}{W}\eta, & \text{if } s < W \\
         \eta, & \text{if } W < s < T \\
         f(s-T)\eta, & \text{if } T < s < S
         \end{cases}
         \end{equation*}
-        
-        \column{0.5\textwidth}
+    \end{columns}
+\end{frame}
+\begin{frame}{WSD Learning Rate Scheduler}
+    \begin{columns}
+    \column{0.5\textwidth}
         \begin{figure}
             \centering
-            \fbox{\parbox{0.9\textwidth}{\centering [WSD Schedule Diagram\\Image Placeholder\\Shows learning rate over training steps with 3 phases\\Dramatic loss reduction in decay phase]}}
+            \includegraphics[width = \textwidth]{img/wsd.png}
             \caption{WSD learning rate schedule and training dynamics}
         \end{figure}
-        
+    \column{0.5\textwidth}
         \begin{alertblock}{Key Finding}
         Only \textbf{10\% of tokens} needed for decay to match Cosine performance!
         \end{alertblock}
@@ -525,7 +530,6 @@ subsubsectionstyle=show/shaded/hide]
             \textbf{Approach} & \textbf{Ratio} & \textbf{Example} \\
             \midrule
             Chinchilla & 20:1 & 1B $\rightarrow$ 20B tokens \\
-            \rowcolor{yellow!30}
             \textbf{MiniCPM} & \textbf{192:1} & \textbf{1B $\rightarrow$ 192B tokens} \\
             \bottomrule
             \end{tabular}
@@ -541,11 +545,6 @@ subsubsectionstyle=show/shaded/hide]
         \end{block}
         
         \column{0.5\textwidth}
-        \begin{figure}
-            \centering
-            \fbox{\parbox{0.9\textwidth}{\centering [Scaling Law Contour Plot\\Image Placeholder\\Shows iso-loss curves for data-model scaling\\Demonstrates 192:1 optimal ratio]}}
-            \caption{Data-model scaling relationship}
-        \end{figure}
         
         \begin{alertblock}{Implication}
         Better to train 1B extensively than 3B on less data
@@ -606,7 +605,7 @@ subsubsectionstyle=show/shaded/hide]
 \section{Synthesis \& Research Plan}
 
 \begin{frame}{Overall Research Objectives}
-    \includegraphics[width=\textwidth]{img/research_plan_overview.png}
+    \includegraphics[width=12cm, height = 7cm]{img/plan2.png}
 \end{frame}
 
 \begin{frame}{Overall Research Objectives}
@@ -629,6 +628,17 @@ subsubsectionstyle=show/shaded/hide]
 \end{frame}
 
 \begin{frame}{Project 1: SLM-First Automated Feature Engineering}
+    % \begin{columns}
+        % \column{0.5\textwidth}
+        \begin{figure}
+            \centering
+            \includegraphics[width = \textwidth]{img/SLM-first-CAAFE.png}
+            \caption{SLM-first feature engineering architecture}
+        \end{figure}
+
+\end{frame}
+
+\begin{frame}{Project 1: SLM-First Automated Feature Engineering}
     \begin{columns}
         \column{0.5\textwidth}
         \textbf{Problem:} AutoML advances contrast with persistent manual feature engineering burden
@@ -641,20 +651,26 @@ subsubsectionstyle=show/shaded/hide]
             \item Generates pandas code with CAAFE-style validation
             \item Escalation gate to larger models after repeated failures
         \end{itemize}
-        
-        \vspace{0.3cm}
-        \textbf{Evaluation:} CAAFE evaluation datasets (OpenML: airlines, balance-scale, breast-w, cmc, credit-g, diabetes, eucalyptus, jungle\_chess, pc1, tic-tac-toe; Kaggle: health-insurance, pharyngitis, kidney-stone, spaceship-titanic) plus additional synthetic datasets; compare against DFS/AutoFeat and LLM-based CAAFE
-        
+
         \column{0.5\textwidth}
-        \begin{figure}
-            \centering
-            \fbox{\parbox{0.9\textwidth}{\centering [Project 1 Architecture\\Image Placeholder\\Shows controller routing to specialized SLMs\\Feature generation and validation pipeline]}}
-            \caption{SLM-first feature engineering architecture}
-        \end{figure}
+        \vspace{0.3cm}
+        \textbf{Evaluation:} Evaluation datasets (e.g. OpenML: airlines, balance-scale, breast-w, cmc, credit-g, diabetes, eucalyptus, jungle\_chess, pc1, tic-tac-toe; Kaggle: health-insurance, pharyngitis, kidney-stone, spaceship-titanic) plus additional synthetic datasets; compare against DFS/AutoFeat and LLM-based CAAFE
+        
+        
     \end{columns}
-    
     \vspace{0.2cm}
     \textbf{Expected Outcome:} Comparable accuracy with lower cost/latency; interpretable feature libraries
+\end{frame}
+
+\begin{frame}{Project 2: SLM-First Case-Based Reasoning}
+   
+        \begin{figure}
+            \centering
+            \includegraphics[width = 12cm,,height = 7cm]{img/cbr.png}
+            \caption{SLM-first case-based reasoning system}
+        \end{figure}
+
+
 \end{frame}
 
 \begin{frame}{Project 2: SLM-First Case-Based Reasoning}
@@ -672,17 +688,22 @@ subsubsectionstyle=show/shaded/hide]
         \end{itemize}
         
         \column{0.5\textwidth}
-        \begin{figure}
-            \centering
-            \fbox{\parbox{0.9\textwidth}{\centering [Project 2 CBR Architecture\\Image Placeholder\\Shows two-stage process: development and deployment\\Case bank, retrieval, and adaptation pipeline]}}
-            \caption{SLM-first case-based reasoning system}
-        \end{figure}
+        \vspace{0.2cm}
+        \textbf{Evaluation:} 30 public datasets (12 development, 18 deployment); compare against DS-Agent and zero-shot baselines
+        
+        \textbf{Expected Outcome:} 85\%+ deployment one-pass success rate at 10-100× lower cost
+    
     \end{columns}
     
-    \vspace{0.2cm}
-    \textbf{Evaluation:} 30 public datasets (12 development, 18 deployment); compare against DS-Agent and zero-shot baselines
+\end{frame}
+
+\begin{frame}{Project 3: SLM-Powered Multi-Agent AutoML}
+        \begin{figure}
+            \centering
+            \includegraphics[width = 13cm, height = 7cm]{img/multi-agent.png}
+            \caption{Multi-agent AutoML orchestration}
+        \end{figure}
     
-    \textbf{Expected Outcome:} 85\%+ deployment one-pass success rate at 10-100× lower cost
 \end{frame}
 
 \begin{frame}{Project 3: SLM-Powered Multi-Agent AutoML}
@@ -699,18 +720,13 @@ subsubsectionstyle=show/shaded/hide]
             \item Sandboxed execution with structured communication
         \end{itemize}
         
-        \column{0.5\textwidth}
-        \begin{figure}
-            \centering
-            \fbox{\parbox{0.9\textwidth}{\centering [Project 3 Multi-Agent System\\Image Placeholder\\Shows planner agent coordinating specialized agents\\Task graph and dependency management]}}
-            \caption{Multi-agent AutoML orchestration}
-        \end{figure}
+        \column{0.3\textwidth}
+        \textbf{Evaluation:} OpenML/UCI datasets; compare against AutoGluon, H2O AutoML, single-agent LLM
+        
+        % \textbf{Expected Outcome:} Automated pipelines rivaling AutoML baselines with sub-5 minute runtime
     \end{columns}
     
-    \vspace{0.2cm}
-    \textbf{Evaluation:} OpenML/UCI datasets; compare against AutoGluon, H2O AutoML, single-agent LLM
     
-    \textbf{Expected Outcome:} Automated pipelines rivaling AutoML baselines with sub-5 minute runtime
 \end{frame}
 
 \begin{frame}{Cross-Cutting Methods: Training \& Methodology}
@@ -752,9 +768,9 @@ subsubsectionstyle=show/shaded/hide]
     \end{itemize}
     \end{block}
     
-    \begin{alertblock}{Success Criteria}
-    All projects must demonstrate: accuracy parity, cost efficiency, and deployment feasibility
-    \end{alertblock}
+    % \begin{alertblock}{Success Criteria}
+    % All projects must demonstrate: accuracy parity, cost efficiency, and deployment feasibility
+    % \end{alertblock}
 \end{frame}
 
 \begin{frame}{Research Contributions}
@@ -774,13 +790,13 @@ subsubsectionstyle=show/shaded/hide]
     \end{itemize}
     \end{block}
     
-    \begin{block}{Application Impact}
-    \begin{itemize}
-        \item Privacy-sensitive data processing (on-premise deployment)
-        \item Resource-constrained environments (edge computing)
-        \item Cost-sensitive production deployments
-    \end{itemize}
-    \end{block}
+    % \begin{block}{Application Impact}
+    % \begin{itemize}
+    %     \item Privacy-sensitive data processing (on-premise deployment)
+    %     \item Resource-constrained environments (edge computing)
+    %     \item Cost-sensitive production deployments
+    % \end{itemize}
+    % \end{block}
 \end{frame}
 
 \section{Conclusion}
